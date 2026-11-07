@@ -29,8 +29,8 @@ export default function Home() {
             <span className="hero__title-accent"> Find yours.</span>
           </h1>
           <p className="hero__lead">
-            Pick what you&rsquo;re saving for, add your numbers, and see how long it could take to get there,
-            along with the milestones on the way.
+            Plan as many dreams as you like, see when each one could come true, and log every deposit to watch
+            the date get closer.
           </p>
         </section>
 
@@ -43,7 +43,7 @@ export default function Home() {
         <div className="container">
           <p>
             Estimates only. Dream Vault assumes a steady monthly contribution and constant growth, and isn&rsquo;t
-            financial advice. Nothing you enter leaves your device.
+            financial advice. Your goals are saved in this browser only and never leave your device.
           </p>
         </div>
       </footer>

@@ -237,7 +237,7 @@
   background: transparent;
   font-size: 1.0625rem;
   font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .input:focus,
@@ -374,7 +374,7 @@
   font-size: 2.75rem;
   font-weight: 600;
   line-height: 1;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .ringCaption {
@@ -399,6 +399,7 @@
 .headlineValue {
   margin-block: 4px 6px;
   font-family: var(--font-display);
+  font-variant-numeric: lining-nums;
   font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: 600;
   line-height: 1.1;
@@ -446,7 +447,7 @@
   margin: 2px 0 0;
   font-size: 1.125rem;
   font-weight: 700;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   overflow-wrap: anywhere;
 }
 

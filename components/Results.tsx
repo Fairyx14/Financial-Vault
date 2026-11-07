@@ -4,22 +4,35 @@ import styles from "./DreamVault.module.css";
 
 interface ResultsProps {
   plan: Plan | null;
-  goalName: string;
+  /** Small label above the title, e.g. "Preview". */
+  eyebrow: string;
+  title: string;
+  /** Use h3 when the panel sits under a page-level h2. */
+  headingLevel?: "h2" | "h3";
   target: number;
   current: number;
   currency: CurrencyCode;
   hasGrowth: boolean;
 }
 
-export default function Results({ plan, goalName, target, current, currency, hasGrowth }: ResultsProps) {
+export default function Results({
+  plan,
+  eyebrow,
+  title,
+  headingLevel: Heading = "h2",
+  target,
+  current,
+  currency,
+  hasGrowth,
+}: ResultsProps) {
   const money = (value: number) => formatMoney(value, currency);
 
   return (
     <section className={styles.results} aria-labelledby="results-title">
-      <p className={styles.resultsEyebrow}>Your vault</p>
-      <h2 id="results-title" className={styles.resultsTitle}>
-        {goalName}
-      </h2>
+      <p className={styles.resultsEyebrow}>{eyebrow}</p>
+      <Heading id="results-title" className={styles.resultsTitle}>
+        {title}
+      </Heading>
 
       {plan === null ? (
         <p className={styles.resultsEmpty} aria-live="polite">
@@ -87,7 +100,7 @@ export default function Results({ plan, goalName, target, current, currency, has
           </dl>
 
           <div className={styles.milestones}>
-            <h3 className={styles.milestonesTitle}>Milestones</h3>
+            <p className={styles.milestonesTitle}>Milestones</p>
             <ol className={styles.milestoneList}>
               {plan.milestones.map((milestone) => {
                 const done = milestone.months === 0;

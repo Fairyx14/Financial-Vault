@@ -133,6 +133,16 @@ export function formatMoney(value: number, currency: CurrencyCode): string {
   }).format(Math.round(value));
 }
 
+/** Short form for chart axes, e.g. "£50K". */
+export function formatMoneyCompact(value: number, currency: CurrencyCode): string {
+  return new Intl.NumberFormat(CURRENCIES[currency].locale, {
+    style: "currency",
+    currency,
+    notation: "compact",
+    maximumFractionDigits: 1,
+  }).format(value);
+}
+
 export function formatDuration(months: number): string {
   const years = Math.floor(months / 12);
   const rest = months % 12;
