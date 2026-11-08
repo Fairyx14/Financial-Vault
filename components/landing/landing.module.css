@@ -89,7 +89,7 @@
 
 .buttonPrimary {
   color: #fff;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
   box-shadow: 0 12px 28px -12px rgb(109 40 217 / 0.85);
 }
 
@@ -100,18 +100,18 @@
 
 .buttonSecondary {
   color: var(--color-secondary);
-  background: rgb(255 255 255 / 0.8);
+  background: var(--color-surface-glass);
   border-color: var(--color-border-strong);
 }
 
 .buttonSecondary:hover {
   border-color: var(--color-primary);
-  background: #fff;
+  background: var(--color-surface);
   transform: translateY(-2px);
 }
 
 .buttonLight {
-  color: var(--color-secondary);
+  color: var(--brand-2);
   background: #fff;
   box-shadow: 0 14px 30px -14px rgb(0 0 0 / 0.5);
 }
@@ -167,8 +167,8 @@
 }
 
 .chipAvailable {
-  color: #067647;
-  background: #ecfdf3;
+  color: var(--good-text);
+  background: var(--good-bg);
 }
 
 .chipAvailable .chipDot {
@@ -177,7 +177,7 @@
 
 .chipSoon {
   color: var(--color-secondary);
-  background: #f1e9ff;
+  background: var(--color-tint);
 }
 
 .exampleBadge {
@@ -189,7 +189,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--color-secondary);
-  background: rgb(255 255 255 / 0.92);
+  background: var(--color-surface-glass);
 }
 
 /* ---------- Sections ---------- */
@@ -199,8 +199,8 @@
 
 .sectionTinted {
   background:
-    radial-gradient(50rem 24rem at 10% 0%, rgb(196 181 253 / 0.28), transparent 70%),
-    linear-gradient(180deg, rgb(243 236 255 / 0.65), rgb(243 236 255 / 0.25));
+    radial-gradient(50rem 24rem at 10% 0%, var(--band-1), transparent 70%),
+    linear-gradient(180deg, var(--band-2), var(--band-3));
 }
 
 .sectionHead {
@@ -244,7 +244,7 @@
   width: min(70vw, 900px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(196 181 253 / 0.55), transparent 65%);
+  background: radial-gradient(circle, var(--glow-hero), transparent 65%);
   pointer-events: none;
 }
 
@@ -326,7 +326,7 @@
   color: #fff;
   background:
     radial-gradient(28rem 16rem at 100% 0%, rgb(196 181 253 / 0.4), transparent 60%),
-    linear-gradient(155deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-deep) 100%);
+    linear-gradient(155deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--color-deep) 100%);
   box-shadow: var(--shadow-lg);
 }
 
@@ -411,7 +411,7 @@
   padding: 14px 16px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: rgb(255 255 255 / 0.96);
+  background: var(--color-surface-glass);
   box-shadow: var(--shadow-md);
   animation: float 6s ease-in-out infinite;
 }
@@ -460,7 +460,7 @@
 }
 
 .ringTrack {
-  stroke: #efe7fd;
+  stroke: var(--color-tint);
 }
 
 .ringValue {
@@ -505,7 +505,7 @@
 .miniBars span {
   flex: 1;
   border-radius: 4px 4px 0 0;
-  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  background: linear-gradient(180deg, var(--brand-1), var(--color-accent));
   transform-origin: bottom;
   animation: grow 900ms var(--ease) both;
 }
@@ -565,12 +565,12 @@
 
 .featureCardLive {
   border-color: var(--color-primary);
-  background: linear-gradient(165deg, #fff 40%, #f4ecff 100%);
+  background: linear-gradient(165deg, var(--color-surface) 40%, var(--color-tint) 100%);
   box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-md);
 }
 
 .featureCardSoon {
-  background: rgb(255 255 255 / 0.75);
+  background: var(--color-surface-glass);
 }
 
 .featureTop {
@@ -588,7 +588,7 @@
   height: 48px;
   border-radius: 14px;
   color: var(--color-secondary);
-  background: #f1e9ff;
+  background: var(--color-tint);
   transition:
     transform var(--duration) var(--ease),
     color var(--duration) var(--ease),
@@ -598,7 +598,7 @@
 .featureCardLive .featureIcon,
 .featureCard:hover .featureIcon {
   color: #fff;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
 }
 
 .featureCard:hover .featureIcon {
@@ -694,7 +694,7 @@
   font-weight: 600;
   line-height: 1;
   font-variant-numeric: lining-nums;
-  color: #ede4fc;
+  color: var(--color-border);
 }
 
 .stepIcon {
@@ -706,7 +706,7 @@
   margin-bottom: 22px;
   border-radius: 20px;
   color: #fff;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
   box-shadow: 0 12px 24px -12px rgb(109 40 217 / 0.8);
 }
 
@@ -735,7 +735,7 @@
   overflow: hidden;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  background: rgb(255 255 255 / 0.7);
+  background: var(--color-surface-glass);
   box-shadow: var(--shadow-lg);
 }
 
@@ -747,7 +747,7 @@
   gap: 10px;
   padding: 14px 20px;
   border-bottom: 1px solid var(--color-border);
-  background: rgb(255 255 255 / 0.85);
+  background: var(--color-surface-glass);
 }
 
 .dashDots {
@@ -801,7 +801,7 @@
   padding: 24px;
   border-radius: var(--radius-lg);
   color: #fff;
-  background: linear-gradient(155deg, var(--color-primary), var(--color-secondary) 55%, var(--color-deep));
+  background: linear-gradient(155deg, var(--brand-1), var(--brand-2) 55%, var(--color-deep));
 }
 
 .dashNetWorth .dashNote {
@@ -892,7 +892,7 @@
 }
 
 .dashGrid1 {
-  stroke: #efe8fb;
+  stroke: var(--chart-grid);
 }
 
 .dashAxis {
@@ -921,7 +921,7 @@
 
 .dashDot {
   fill: var(--color-primary);
-  stroke: #fff;
+  stroke: var(--color-surface);
   stroke-width: 2;
 }
 
@@ -953,7 +953,7 @@
   height: 8px;
   overflow: hidden;
   border-radius: 999px;
-  background: #efe7fd;
+  background: var(--color-tint);
 }
 
 .dashTrack span,
@@ -961,7 +961,7 @@
   display: block;
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
 }
 
 .dashSpend {
@@ -1130,7 +1130,7 @@
   padding: clamp(22px, 4vw, 32px);
   border-radius: var(--radius-xl);
   color: var(--color-text);
-  background: #fff;
+  background: var(--color-surface);
   box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.6);
 }
 
@@ -1153,7 +1153,7 @@
   margin: 22px 0;
   padding: 16px;
   border-radius: var(--radius-md);
-  background: #f7f2ff;
+  background: var(--color-tint);
 }
 
 .simSliderLabel {
@@ -1174,14 +1174,14 @@
   grid-column: 1 / -1;
   height: 6px;
   border-radius: 999px;
-  background: #e4d8fb;
+  background: var(--color-border-strong);
 }
 
 .simSliderFill {
   position: absolute;
   inset: 0 30% 0 0;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
 }
 
 .simSliderThumb {
@@ -1190,9 +1190,9 @@
   left: 70%;
   width: 18px;
   height: 18px;
-  border: 3px solid #fff;
+  border: 3px solid var(--color-surface);
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--brand-1);
   box-shadow: var(--shadow-sm);
   transform: translate(-50%, -50%);
 }
@@ -1220,18 +1220,18 @@
   display: block;
   height: 10px;
   border-radius: 999px;
-  background: #f1ebfb;
+  background: var(--color-tint);
 }
 
 .simBar span {
   display: block;
   height: 100%;
   border-radius: 999px;
-  background: #9b95c9;
+  background: var(--chart-plan);
 }
 
 .simCompareBetter .simBar span {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
 }
 
 .simResult {
@@ -1244,7 +1244,7 @@
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--color-secondary);
-  background: #f1e9ff;
+  background: var(--color-tint);
 }
 
 .toolList {
@@ -1325,7 +1325,7 @@
   height: 48px;
   border-radius: 50%;
   color: var(--color-secondary);
-  background: #f1e9ff;
+  background: var(--color-tint);
 }
 
 .benefitIcon {
@@ -1376,7 +1376,7 @@
   padding: 24px 28px;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-lg);
-  background: rgb(255 255 255 / 0.8);
+  background: var(--color-surface-glass);
 }
 
 .honestTitle {
@@ -1411,7 +1411,7 @@
   background:
     radial-gradient(30rem 20rem at 85% 0%, rgb(196 181 253 / 0.5), transparent 60%),
     radial-gradient(30rem 20rem at 10% 100%, rgb(46 16 101 / 0.6), transparent 60%),
-    linear-gradient(135deg, var(--color-primary), var(--color-secondary) 55%, var(--color-deep));
+    linear-gradient(135deg, var(--brand-1), var(--brand-2) 55%, var(--color-deep));
   box-shadow: var(--shadow-lg);
 }
 

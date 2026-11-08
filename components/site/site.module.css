@@ -23,7 +23,7 @@
   height: 34px;
   border-radius: 50%;
   color: #fff;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
   box-shadow: var(--shadow-sm);
   transition: transform 400ms var(--ease);
 }
@@ -38,7 +38,7 @@
   top: 0;
   z-index: 50;
   border-bottom: 1px solid transparent;
-  background: rgb(250 245 255 / 0.7);
+  background: var(--header-bg);
   backdrop-filter: saturate(1.4) blur(14px);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
   transition:
@@ -49,7 +49,7 @@
 
 .headerRaised {
   border-bottom-color: var(--color-border);
-  background: rgb(250 245 255 / 0.9);
+  background: var(--header-bg-raised);
   box-shadow: 0 8px 24px -18px rgb(46 16 101 / 0.4);
 }
 
@@ -64,6 +64,34 @@
 .nav {
   display: flex;
   align-items: center;
+}
+
+.headerEnd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.themeToggle {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: 50%;
+  color: var(--color-text);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition:
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease),
+    transform 400ms var(--ease);
+}
+
+.themeToggle:hover {
+  border-color: var(--color-primary);
+  transform: rotate(-15deg);
 }
 
 .menu {
@@ -113,7 +141,7 @@
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
   box-shadow: 0 8px 20px -10px rgb(109 40 217 / 0.8);
   transition:
     transform var(--duration) var(--ease),
@@ -223,7 +251,7 @@
 .footer {
   margin-top: clamp(56px, 8vw, 96px);
   border-top: 1px solid var(--color-border);
-  background: rgb(255 255 255 / 0.55);
+  background: var(--color-surface-glass);
 }
 
 .footerInner {

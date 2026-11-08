@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import { SECTION_LINKS, VAULT_HREF } from "./nav";
+import ThemeToggle from "./ThemeToggle";
 import styles from "./site.module.css";
 
 interface SiteHeaderProps {
@@ -50,6 +51,7 @@ export default function SiteHeader({ current = "other" }: SiteHeaderProps) {
       <div className={`container ${styles.headerInner}`}>
         <Logo />
 
+        <div className={styles.headerEnd}>
         <nav aria-label="Main" className={styles.nav}>
           <button
             ref={toggleRef}
@@ -87,6 +89,8 @@ export default function SiteHeader({ current = "other" }: SiteHeaderProps) {
             </Link>
           </div>
         </nav>
+        <ThemeToggle />
+        </div>
       </div>
     </header>
   );
