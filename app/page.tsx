@@ -1,52 +1,35 @@
-import DreamVault from "@/components/DreamVault";
+import Benefits from "@/components/landing/Benefits";
+import DashboardPreview from "@/components/landing/DashboardPreview";
+import FeatureGrid from "@/components/landing/FeatureGrid";
+import FinalCta from "@/components/landing/FinalCta";
+import Hero from "@/components/landing/Hero";
+import LegacyHashRedirect from "@/components/landing/LegacyHashRedirect";
+import Privacy from "@/components/landing/Privacy";
+import Simulator from "@/components/landing/Simulator";
+import Steps from "@/components/landing/Steps";
+import SiteFooter from "@/components/site/SiteFooter";
+import SiteHeader from "@/components/site/SiteHeader";
 
+/** Marketing homepage. The savings tracker itself lives at /vault. */
 export default function Home() {
   return (
     <>
-      <a href="#planner" className="skip-link">
-        Skip to the planner
+      <LegacyHashRedirect />
+      <a href="#main" className="skip-link">
+        Skip to content
       </a>
-
-      <header className="site-header">
-        <div className="container site-header__inner">
-          <p className="brand">
-            <span className="brand__mark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
-                <path d="M12 2.5 20.5 8 12 21.5 3.5 8 12 2.5Z" />
-                <path d="M3.5 8h17M12 2.5 8.5 8 12 21.5 15.5 8 12 2.5Z" />
-              </svg>
-            </span>
-            Dream Vault
-          </p>
-        </div>
-      </header>
-
-      <main id="planner" tabIndex={-1}>
-        <section className="hero container" aria-labelledby="hero-title">
-          <p className="hero__eyebrow">Private savings planner</p>
-          <h1 id="hero-title" className="hero__title">
-            Every dream has a date.
-            <span className="hero__title-accent"> Find yours.</span>
-          </h1>
-          <p className="hero__lead">
-            Plan as many dreams as you like, see when each one could come true, and log every deposit to watch
-            the date get closer.
-          </p>
-        </section>
-
-        <div className="container">
-          <DreamVault />
-        </div>
+      <SiteHeader current="home" />
+      <main id="main" tabIndex={-1}>
+        <Hero />
+        <FeatureGrid />
+        <Steps />
+        <DashboardPreview />
+        <Simulator />
+        <Benefits />
+        <Privacy />
+        <FinalCta />
       </main>
-
-      <footer className="site-footer">
-        <div className="container">
-          <p>
-            Estimates only. Dream Vault assumes a steady monthly contribution and constant growth, and isn&rsquo;t
-            financial advice. Your goals are saved in this browser only and never leave your device.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

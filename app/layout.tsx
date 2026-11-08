@@ -15,10 +15,29 @@ const body = Manrope({
   display: "swap",
 });
 
+const DESCRIPTION =
+  "Dream Vault is a personal finance planner. Set savings goals, log deposits and see when each dream could come true, with budgeting, investment and net-worth tools on the way.";
+
 export const metadata: Metadata = {
-  title: "Dream Vault: plan your financial goals",
-  description:
-    "Choose a financial goal, enter your target, savings and monthly contribution, and see how long it could take to get there.",
+  title: {
+    default: "Dream Vault: every dream has a date",
+    template: "%s · Dream Vault",
+  },
+  description: DESCRIPTION,
+  applicationName: "Dream Vault",
+  keywords: ["savings goals", "savings planner", "personal finance", "budgeting", "net worth", "financial planning", "UK"],
+  openGraph: {
+    type: "website",
+    siteName: "Dream Vault",
+    title: "Dream Vault: every dream has a date",
+    description: DESCRIPTION,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary",
+    title: "Dream Vault: every dream has a date",
+    description: DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {
