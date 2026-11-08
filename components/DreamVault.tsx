@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { formatMoney } from "@/lib/plan";
-import { currentBalance, type Entry } from "@/lib/vault";
+import { currentBalance, formatDay, type Entry } from "@/lib/vault";
+import ConfirmDialog, { type ConfirmRequest } from "./ConfirmDialog";
 import Dashboard from "./Dashboard";
 import GoalDetail from "./GoalDetail";
 import GoalForm from "./GoalForm";
@@ -15,6 +16,7 @@ export default function DreamVault() {
   const { vault, storageWorks, setCurrency, addGoal, editGoal, deleteGoal, addEntry, deleteEntry } = useVault();
   const [route, navigate] = useHashRoute();
   const [announcement, setAnnouncement] = useState("");
+  const [confirmRequest, setConfirmRequest] = useState<ConfirmRequest | null>(null);
   const firstView = useRef(true);
   const key = routeKey(route);
 
@@ -98,17 +100,28 @@ export default function DreamVault() {
           setAnnouncement(entry.amount >= 0 ? `${amount} added to ${goal.name}.` : `${amount} withdrawn from ${goal.name}.`);
         }}
         onDeleteEntry={(entry: Entry) => {
-          if (window.confirm(`Delete this entry of ${formatMoney(Math.abs(entry.amount), currency)}?`)) {
-            deleteEntry(goal.id, entry.id);
-            setAnnouncement("Entry deleted.");
-          }
+          const kind = entry.amount >= 0 ? "deposit" : "withdrawal";
+          setConfirmRequest({
+            title: `Delete this ${kind}?`,
+            message: `The ${kind} of ${formatMoney(Math.abs(entry.amount), currency)} on ${formatDay(entry.date)} will be removed from ${goal.name}.`,
+            confirmLabel: `Delete ${kind}`,
+            onConfirm: () => {
+              deleteEntry(goal.id, entry.id);
+              setAnnouncement("Entry deleted.");
+            },
+          });
         }}
         onDeleteGoal={() => {
-          if (window.confirm(`Delete "${goal.name}" and all of its history? This can't be undone.`)) {
-            deleteGoal(goal.id);
-            setAnnouncement(`${goal.name} deleted.`);
-            navigate("#/");
-          }
+          setConfirmRequest({
+            title: `Delete “${goal.name}”?`,
+            message: "This goal and all of its history will be permanently removed. This can't be undone.",
+            confirmLabel: "Delete goal",
+            onConfirm: () => {
+              deleteGoal(goal.id);
+              setAnnouncement(`${goal.name} deleted.`);
+              navigate("#/");
+            },
+          });
         }}
       />
     );
@@ -124,6 +137,7 @@ export default function DreamVault() {
         </p>
       )}
       {view}
+      <ConfirmDialog request={confirmRequest} onClose={() => setConfirmRequest(null)} />
       <p className="visually-hidden" aria-live="polite">
         {announcement}
       </p>

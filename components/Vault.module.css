@@ -95,6 +95,93 @@
   border-color: #b42318;
 }
 
+.buttonDangerSolid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #fff;
+  background: #b42318;
+  cursor: pointer;
+  transition:
+    background-color var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.buttonDangerSolid:hover {
+  background: #912018;
+  transform: translateY(-1px);
+}
+
+/* ---------- Confirmation dialog ---------- */
+.dialog {
+  width: min(440px, calc(100vw - 32px));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-xl);
+  color: var(--color-text);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.dialog[open] {
+  animation: dialog-in 200ms var(--ease);
+}
+
+.dialog::backdrop {
+  background: rgb(30 27 75 / 0.45);
+  backdrop-filter: blur(3px);
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+.dialogPanel {
+  padding: 28px;
+}
+
+.dialogTitle {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.dialogText {
+  margin-top: 10px;
+  color: var(--color-muted);
+}
+
+.dialogActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+@media (max-width: 420px) {
+  .dialogActions > * {
+    width: 100%;
+  }
+
+  /* Destructive action on top, Cancel below, both full width. */
+  .dialogActions {
+    flex-direction: column-reverse;
+  }
+}
+
 .iconButton {
   display: grid;
   place-items: center;
