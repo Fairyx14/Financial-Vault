@@ -1,0 +1,766 @@
+/* =========================================================
+   Investment Vault
+   Shares tokens with the rest of Dream Vault (app/globals.css) and reuses
+   buttons, cards and form fields from Vault.module.css / DreamVault.module.css.
+   ========================================================= */
+
+/* ---------- Gain / loss ---------- */
+.positive {
+  color: var(--good-text);
+}
+
+.negative {
+  color: var(--color-error);
+}
+
+.neutral {
+  color: var(--color-muted);
+}
+
+.gain {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 8px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.gainStack {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.gainMain {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.gainPct {
+  font-size: 0.875em;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.gainLg {
+  font-size: 1.0625rem;
+}
+
+/* ---------- Overview ---------- */
+.overview {
+  display: grid;
+  gap: 16px;
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+@media (min-width: 960px) {
+  .overview {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  }
+
+  .fxNote {
+    grid-column: 1 / -1;
+  }
+}
+
+.valueCard {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: clamp(24px, 4vw, 32px);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  color: #fff;
+  background:
+    radial-gradient(26rem 16rem at 100% 0%, rgb(196 181 253 / 0.35), transparent 60%),
+    linear-gradient(155deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--color-deep) 100%);
+  box-shadow: var(--shadow-lg);
+}
+
+.valueLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.valueAmount {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  font-variant-numeric: lining-nums;
+  overflow-wrap: anywhere;
+}
+
+/* On the purple card, gains and losses sit in soft pills with light text. */
+.valueCard .gain {
+  justify-self: start;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.valueCard .positive {
+  color: #ecfdf3;
+  background: rgb(18 183 106 / 0.22);
+}
+
+.valueCard .negative {
+  color: #fff1f0;
+  background: rgb(240 68 56 / 0.25);
+}
+
+.valueCard .neutral {
+  color: #fff;
+  background: rgb(255 255 255 / 0.14);
+}
+
+.valueNote {
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+@media (min-width: 640px) and (max-width: 959px) {
+  .tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.tile {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+}
+
+.tile dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tile dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.tile dd:first-of-type {
+  margin-top: 4px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.tile .tileNote {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.fxNote {
+  padding: 14px 18px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-glass);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.fxNote strong {
+  color: var(--color-text);
+}
+
+/* ---------- Holdings ---------- */
+.holdings {
+  display: grid;
+  gap: 16px;
+}
+
+.holdingsHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.resultCount {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.filters {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 760px) {
+  .filters {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+}
+
+.searchField,
+.selectField {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  transition:
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.searchField:hover,
+.selectField:hover {
+  border-color: #a78bfa;
+}
+
+.searchField:focus-within,
+.selectField:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgb(124 58 237 / 0.18);
+}
+
+.searchField input,
+.selectField select {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.searchField input:focus-visible,
+.selectField select:focus-visible {
+  outline: none;
+}
+
+.searchField input::placeholder {
+  color: var(--color-placeholder);
+  font-weight: 500;
+}
+
+.selectField {
+  padding-right: 36px;
+}
+
+.selectField::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--color-muted);
+  border-bottom: 2px solid var(--color-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.selectField select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.selectLabel {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.noResults {
+  padding: 32px;
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  color: var(--color-muted);
+}
+
+/* Table on wide screens, cards on narrow ones. */
+.tableWrap {
+  display: none;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 860px) {
+  .tableWrap {
+    display: block;
+  }
+
+  .cards {
+    display: none;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.table thead th {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  background: var(--color-hover-tint);
+}
+
+.table tbody th,
+.table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.row {
+  cursor: pointer;
+  transition: background-color var(--duration) var(--ease);
+}
+
+.row:hover {
+  background: var(--color-hover-tint);
+}
+
+.rowLink {
+  display: block;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.row:hover .rowLink,
+.rowLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rowMeta {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  color: inherit;
+  text-decoration: none;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.cardName {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.cardValue {
+  font-size: 1.375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.cardStatLabel {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tableNote {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+/* ---------- Form preview ---------- */
+.previewCard {
+  display: grid;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 32px);
+  border-radius: var(--radius-xl);
+  color: #fff;
+  background:
+    radial-gradient(26rem 16rem at 100% 0%, rgb(196 181 253 / 0.35), transparent 60%),
+    linear-gradient(155deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--color-deep) 100%);
+  box-shadow: var(--shadow-lg);
+}
+
+.previewEyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.previewTitle {
+  margin-top: -10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.previewList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.previewList > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 12px 14px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: var(--radius-md);
+  background: rgb(255 255 255 / 0.08);
+}
+
+.previewList dt {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.previewList dd {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.previewCard .positive {
+  color: #ecfdf3;
+}
+
+.previewCard .negative {
+  color: #fff1f0;
+}
+
+.previewCard .neutral {
+  color: #fff;
+}
+
+.previewNote,
+.previewEmpty {
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+/* ---------- Detail ---------- */
+.detailGrid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+@media (min-width: 960px) {
+  .detailGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  }
+}
+
+.detailColumns {
+  display: grid;
+  gap: clamp(20px, 3vw, 28px);
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .detailColumns {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  }
+}
+
+.priceForm {
+  display: grid;
+  gap: 16px;
+}
+
+.priceFields {
+  display: grid;
+  gap: 14px;
+}
+
+.savedNote {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--good-text);
+}
+
+.historyRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.historyRow:first-child {
+  border-top: 0;
+}
+
+.historyIconPrice {
+  color: var(--color-primary);
+  background: var(--color-tint);
+}
+
+/* ---------- Record-activity buttons ---------- */
+.actionBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px 0 8px;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--color-surface);
+  transition:
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.actionButton:hover {
+  border-color: var(--color-primary);
+  background: var(--color-hover-tint);
+  transform: translateY(-1px);
+}
+
+.actionIcon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+}
+
+@media (max-width: 520px) {
+  .actionBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Performance breakdown ---------- */
+.breakdownCard {
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+.breakdown {
+  display: grid;
+  margin: 0;
+}
+
+.breakdown > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.breakdown > div:first-child {
+  border-top: 0;
+}
+
+.breakdown dt {
+  display: grid;
+  font-weight: 700;
+}
+
+.breakdown dt span {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.breakdown dd {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.breakdown .breakdownTotal {
+  margin-top: 4px;
+  border-top: 2px solid var(--color-border-strong);
+}
+
+.breakdownTotal dt {
+  font-size: 1.0625rem;
+}
+
+/* ---------- History extras ---------- */
+.historyRight {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+}
+
+.historyActions {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.historyActions a {
+  text-decoration: none;
+}
+
+.historyRealised {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.historyNoteText {
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+.historyIcon_sell {
+  color: var(--color-primary);
+  background: var(--color-tint);
+}
+
+.historyIcon_price {
+  color: var(--color-primary);
+  background: var(--color-tint);
+}
+
+.historyIcon_fee {
+  color: var(--warn-text);
+  background: var(--warn-bg);
+}
+
+/* ---------- Disclaimer ---------- */
+.disclaimer {
+  max-width: 80ch;
+  margin-top: clamp(32px, 5vw, 48px);
+  padding: 16px 20px;
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--color-surface-glass);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}

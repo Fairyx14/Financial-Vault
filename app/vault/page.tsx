@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import DreamVault from "@/components/DreamVault";
+import AppTabs from "@/components/site/AppTabs";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
 
@@ -17,6 +18,7 @@ export default function VaultPage() {
         Skip to the planner
       </a>
       <SiteHeader current="vault" />
+      <AppTabs current="savings" />
 
       <main id="planner" tabIndex={-1}>
         <section className="hero container" aria-labelledby="hero-title">

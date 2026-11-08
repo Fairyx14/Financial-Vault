@@ -17,8 +17,11 @@ export default function PrivacyPage() {
 
       <h2>What Dream Vault stores</h2>
       <p>
-        When you use the <Link href="/vault">Savings Vault</Link>, the goals, amounts, dates and notes you enter are saved in
-        your browser&rsquo;s local storage on the device you&rsquo;re using. Your chosen currency is saved there too.
+        When you use the <Link href="/vault">Savings Vault</Link> or the <Link href="/investments">Investment Vault</Link>,
+        everything you enter (goals, deposits, investments, prices, exchange rates and notes) is saved in your
+        browser&rsquo;s local storage on the device you&rsquo;re using. Your chosen currency and light or dark theme are saved
+        there too. Investment prices are only ever the ones you type in; Dream Vault doesn&rsquo;t connect to any broker or
+        market-data service.
       </p>
 
       <h2>What Dream Vault doesn&rsquo;t do</h2>
@@ -39,7 +42,7 @@ export default function PrivacyPage() {
 
       <h2>Deleting your data</h2>
       <p>
-        You can delete any goal or entry inside the Savings Vault. To remove everything at once, clear this site&rsquo;s
+        You can delete any goal, entry or investment inside the vaults. To remove everything at once, clear this site&rsquo;s
         data in your browser settings.
       </p>
     </LegalPage>

@@ -41,8 +41,8 @@ export default function Steps() {
         ))}
       </ol>
       <p className={`${styles.stepsNote} ${styles.reveal}`}>
-        Today you can do all three for your savings goals. Income, expenses and investments arrive with the upcoming
-        vaults.
+        Today you can do all three for your savings goals and investments. Income and expenses arrive with the
+        upcoming vaults.
       </p>
     </Section>
   );

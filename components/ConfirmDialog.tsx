@@ -6,8 +6,9 @@ import styles from "./Vault.module.css";
 export interface ConfirmRequest {
   title: string;
   message: string;
-  confirmLabel: string;
-  onConfirm: () => void;
+  /** Leave out confirmLabel and onConfirm for an information-only box with a single OK button. */
+  confirmLabel?: string;
+  onConfirm?: () => void;
 }
 
 interface ConfirmDialogProps {
@@ -41,7 +42,11 @@ export default function ConfirmDialog({ request, onClose }: ConfirmDialogProps) 
       className={styles.dialog}
       aria-labelledby="confirm-title"
       aria-describedby="confirm-message"
-      onClose={onClose}
+      // The close event arrives a moment after closing. If another request has reopened
+      // the dialog in the meantime, this event is stale and must not clear it.
+      onClose={() => {
+        if (!ref.current?.open) onClose();
+      }}
       // A tap on the backdrop (outside the panel) cancels.
       onClick={(event) => event.target === event.currentTarget && close()}
     >
@@ -55,18 +60,20 @@ export default function ConfirmDialog({ request, onClose }: ConfirmDialogProps) 
           </p>
           <div className={styles.dialogActions}>
             <button type="button" className={styles.buttonSecondary} onClick={close} autoFocus>
-              Cancel
+              {request.onConfirm ? "Cancel" : "OK"}
             </button>
-            <button
-              type="button"
-              className={styles.buttonDangerSolid}
-              onClick={() => {
-                request.onConfirm();
-                close();
-              }}
-            >
-              {request.confirmLabel}
-            </button>
+            {request.onConfirm && (
+              <button
+                type="button"
+                className={styles.buttonDangerSolid}
+                onClick={() => {
+                  request.onConfirm?.();
+                  close();
+                }}
+              >
+                {request.confirmLabel}
+              </button>
+            )}
           </div>
         </div>
       )}

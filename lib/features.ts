@@ -31,10 +31,12 @@ export const FEATURES: Feature[] = [
     id: "investment",
     name: "Investment Vault",
     tagline: "See the bigger picture of your investments.",
+    // Phases 1–2 are live. Update this description as charts and planning tools ship.
     description:
-      "Track stocks, ETFs, funds and other assets. Monitor contributions, portfolio values, gains and losses, and explore hypothetical investment growth.",
+      "Track stocks, ETFs, funds and other assets. Record purchases, sales and dividends, and see your portfolio value, realised and unrealised gains, and total return. Charts and growth planning are on the way.",
     icon: ["M3 17l6-6 4 4 8-8", "M15 7h6v6"],
-    status: "coming-soon",
+    status: "available",
+    href: "/investments",
   },
   {
     id: "budget",

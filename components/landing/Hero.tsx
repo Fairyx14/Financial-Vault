@@ -36,7 +36,7 @@ export default function Hero() {
               <Icon paths={CHECK} size={16} /> Saved privately in your browser
             </li>
             <li>
-              <Icon paths={CHECK} size={16} /> Savings Vault available now
+              <Icon paths={CHECK} size={16} /> Savings & Investment Vaults available now
             </li>
           </ul>
         </div>

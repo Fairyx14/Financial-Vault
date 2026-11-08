@@ -7,12 +7,12 @@ import styles from "./landing.module.css";
 const FACTS = [
   {
     title: "Stored on your device",
-    text: "Your savings goals and deposits are saved in your browser's local storage on this device. They aren't sent to a Dream Vault server.",
+    text: "Your savings goals, deposits and investments are saved in your browser's local storage on this device. They aren't sent to a Dream Vault server.",
     icon: ["M4 5h16v11H4z", "M8 20h8", "M12 16v4"],
   },
   {
     title: "No account or sign-in",
-    text: "You don't need to create an account or share an email address to use the Savings Vault.",
+    text: "You don't need to create an account or share an email address to use the Savings or Investment Vault.",
     icon: ["M20 21a8 8 0 0 0-16 0", "M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"],
   },
   {
