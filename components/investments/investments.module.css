@@ -753,6 +753,15 @@
   background: var(--warn-bg);
 }
 
+.recordedBadge {
+  padding: 4px 10px;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
 /* ---------- Disclaimer ---------- */
 .disclaimer {
   max-width: 80ch;

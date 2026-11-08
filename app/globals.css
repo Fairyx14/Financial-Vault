@@ -35,6 +35,17 @@
   --chart-plan: #6b6894;
   --chart-grid: #efe8fb;
 
+  /* Category colours for charts, in a fixed order validated for colour-blind separation.
+     Each investment category always uses the same slot (see components/investments/categoryColors.ts). */
+  --cat-1: #2a78d6;
+  --cat-2: #eb6834;
+  --cat-3: #1baf7a;
+  --cat-4: #eda100;
+  --cat-5: #e87ba4;
+  --cat-6: #008300;
+  --cat-7: #6250d6;
+  --cat-8: #e34948;
+
   --glow-1: rgb(196 181 253 / 0.45);
   --glow-2: rgb(124 58 237 / 0.08);
   --glow-hero: rgb(196 181 253 / 0.55);
@@ -89,6 +100,14 @@
     --danger-border: rgb(253 162 155 / 0.45);
     --chart-plan: #6c6790;
     --chart-grid: #2a2249;
+  --cat-1: #3987e5;
+  --cat-2: #d95926;
+  --cat-3: #199e70;
+  --cat-4: #c98500;
+  --cat-5: #d55181;
+  --cat-6: #008300;
+  --cat-7: #9085e9;
+  --cat-8: #e66767;
     --glow-1: rgb(124 58 237 / 0.22);
     --glow-2: rgb(124 58 237 / 0.1);
     --glow-hero: rgb(124 58 237 / 0.32);
@@ -127,6 +146,14 @@
   --danger-border: rgb(253 162 155 / 0.45);
   --chart-plan: #6c6790;
   --chart-grid: #2a2249;
+  --cat-1: #3987e5;
+  --cat-2: #d95926;
+  --cat-3: #199e70;
+  --cat-4: #c98500;
+  --cat-5: #d55181;
+  --cat-6: #008300;
+  --cat-7: #9085e9;
+  --cat-8: #e66767;
   --glow-1: rgb(124 58 237 / 0.22);
   --glow-2: rgb(124 58 237 / 0.1);
   --glow-hero: rgb(124 58 237 / 0.32);

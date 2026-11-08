@@ -31,9 +31,8 @@ export const FEATURES: Feature[] = [
     id: "investment",
     name: "Investment Vault",
     tagline: "See the bigger picture of your investments.",
-    // Phases 1–2 are live. Update this description as charts and planning tools ship.
     description:
-      "Track stocks, ETFs, funds and other assets. Record purchases, sales and dividends, and see your portfolio value, realised and unrealised gains, and total return. Charts and growth planning are on the way.",
+      "Track stocks, ETFs, funds and other assets. Record purchases, sales and dividends, chart your portfolio, and explore hypothetical growth with a compound calculator and investment goals.",
     icon: ["M3 17l6-6 4 4 8-8", "M15 7h6v6"],
     status: "available",
     href: "/investments",
@@ -94,11 +93,11 @@ export const FEATURES: Feature[] = [
   },
 ];
 
-/** Calculators planned for the Financial Tools module. None are built yet. */
-export const PLANNED_TOOLS = [
-  "Mortgage repayments",
-  "Pension projections",
-  "Compound interest",
-  "Salary take-home pay",
-  "Subscription costs",
+/** Calculators for the Financial Tools module. Only give one an href once it really works. */
+export const PLANNED_TOOLS: { name: string; href?: string; where?: string }[] = [
+  { name: "Mortgage repayments" },
+  { name: "Pension projections" },
+  { name: "Compound interest", href: "/investments#/calculator", where: "In the Investment Vault" },
+  { name: "Salary take-home pay" },
+  { name: "Subscription costs" },
 ];

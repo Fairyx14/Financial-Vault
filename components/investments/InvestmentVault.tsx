@@ -16,6 +16,12 @@ import { useHashPath } from "../useHashPath";
 import HoldingDetail from "./HoldingDetail";
 import Holdings from "./Holdings";
 import InvestmentForm from "./InvestmentForm";
+import GoalForm from "./GoalForm";
+import Goals from "./Goals";
+import GrowthCalculator from "./GrowthCalculator";
+import PortfolioCharts from "./PortfolioCharts";
+import { useInvestmentGoals } from "./useInvestmentGoals";
+import VaultTabs, { type VaultTab } from "./VaultTabs";
 import PortfolioOverview from "./PortfolioOverview";
 import { useInvestments } from "./useInvestments";
 import vault from "../Vault.module.css";
@@ -26,6 +32,7 @@ const TRANSACTION_TYPES = Object.keys(TRANSACTION_LABELS) as TransactionType[];
 export default function InvestmentVault() {
   const { investments, storageWorks, add, editDetails, remove, updatePrice, saveTransaction, deleteTransaction } =
     useInvestments();
+  const { goals, addGoal, editGoal, deleteGoal } = useInvestmentGoals();
   const path = useHashPath();
   const [announcement, setAnnouncement] = useState("");
   const [confirmRequest, setConfirmRequest] = useState<ConfirmRequest | null>(null);
@@ -48,7 +55,7 @@ export default function InvestmentVault() {
     (heading.closest("section") ?? heading).scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" });
   }, [routeKey, investments === null]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!investments || !portfolio) {
+  if (!investments || !portfolio || !goals) {
     return (
       <p className={vault.loading} aria-busy="true">
         Opening your Investment Vault…
@@ -60,13 +67,61 @@ export default function InvestmentVault() {
     window.location.hash = hash;
   };
   // Routes: #/ · #/new · #/holding/:id · #/holding/:id/edit · #/holding/:id/add/:type · #/holding/:id/tx/:txId
+  //         #/calculator · #/goals · #/goals/new · #/goals/:id/edit
   const [view, id, action, param] = path;
+  const tab: VaultTab = view === "calculator" ? "calculator" : view === "goals" ? "goals" : "portfolio";
+  const editingGoal = view === "goals" && action === "edit" ? goals.find((g) => g.id === id) : undefined;
   const holding = view === "holding" ? portfolio.holdings.find((h) => h.investment.id === id) : undefined;
   const editingTx = holding && action === "tx" ? holding.investment.transactions.find((t) => t.id === param) : undefined;
   const addType = action === "add" && TRANSACTION_TYPES.includes(param as TransactionType) ? (param as TransactionType) : null;
   let content: React.ReactNode;
 
-  if (view === "new") {
+  if (view === "calculator") {
+    content = <GrowthCalculator portfolioValue={portfolio.valueGBP} />;
+  } else if (view === "goals" && id === "new") {
+    content = (
+      <GoalForm
+        key="new-goal"
+        portfolio={portfolio}
+        onSubmit={(draft) => {
+          addGoal(draft);
+          setAnnouncement(`${draft.name.trim()} saved.`);
+          go("#/goals");
+        }}
+      />
+    );
+  } else if (editingGoal) {
+    content = (
+      <GoalForm
+        key={`edit-${editingGoal.id}`}
+        initial={editingGoal}
+        portfolio={portfolio}
+        onSubmit={(draft) => {
+          editGoal(editingGoal.id, draft);
+          setAnnouncement("Goal updated.");
+          go("#/goals");
+        }}
+      />
+    );
+  } else if (view === "goals") {
+    content = (
+      <Goals
+        goals={goals}
+        portfolio={portfolio}
+        onDelete={(goal) =>
+          setConfirmRequest({
+            title: `Delete “${goal.name}”?`,
+            message: "This goal will be removed. Your investments aren't affected.",
+            confirmLabel: "Delete goal",
+            onConfirm: () => {
+              deleteGoal(goal.id);
+              setAnnouncement(`${goal.name} deleted.`);
+            },
+          })
+        }
+      />
+    );
+  } else if (view === "new") {
     content = (
       <InvestmentForm
         key="new"
@@ -206,6 +261,7 @@ export default function InvestmentVault() {
         ) : (
           <>
             <PortfolioOverview portfolio={portfolio} />
+            <PortfolioCharts investments={investments} portfolio={portfolio} />
             <Holdings holdings={portfolio.holdings} />
           </>
         )}
@@ -220,6 +276,7 @@ export default function InvestmentVault() {
           This browser isn&rsquo;t letting Dream Vault save. Your investments will disappear when you close the page.
         </p>
       )}
+      <VaultTabs current={tab} />
       {content}
       <ConfirmDialog request={confirmRequest} onClose={() => setConfirmRequest(null)} />
       <p className="visually-hidden" aria-live="polite">

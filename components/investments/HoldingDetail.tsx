@@ -17,6 +17,7 @@ import { formatDay, todayISO } from "@/lib/vault";
 import { currencySymbol, direction, money, signedMoney, signedPercent, unitPrice, units } from "./format";
 import Field from "./Field";
 import GainLoss from "./GainLoss";
+import PriceHistoryChart from "./PriceHistoryChart";
 import vault from "../Vault.module.css";
 import styles from "./investments.module.css";
 
@@ -185,6 +186,16 @@ export default function HoldingDetail({ holding, onUpdatePrice, onDelete, onDele
             <dd><GainLoss amount={summary.totalReturnGBP} percent={summary.totalReturnPct} /></dd>
           </div>
         </dl>
+      </section>
+
+      <section className={`${vault.card} ${styles.breakdownCard}`} aria-labelledby="price-history-title">
+        <div className={vault.cardHead}>
+          <h3 id="price-history-title" className={vault.cardTitle}>
+            Price history
+          </h3>
+          <span className={styles.recordedBadge}>Prices you entered</span>
+        </div>
+        <PriceHistoryChart investment={investment} />
       </section>
 
       <div className={styles.detailColumns}>

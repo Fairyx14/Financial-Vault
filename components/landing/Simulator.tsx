@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { VAULT_HREF } from "@/components/site/nav";
 import { PLANNED_TOOLS } from "@/lib/features";
 import { ExampleBadge, StatusChip } from "./Section";
 import styles from "./landing.module.css";
@@ -43,11 +42,11 @@ export default function Simulator() {
 
           <div className={styles.simToday}>
             <p>
-              <strong>Available today:</strong> in the Savings Vault you can already change your monthly contribution or
-              expected growth and watch your goal date move.
+              <strong>Available today:</strong> the Investment Vault&rsquo;s growth calculator compares three scenarios side by
+              side, and in the Savings Vault you can change your monthly contribution and watch your goal date move.
             </p>
-            <Link href={VAULT_HREF} className={styles.simLink}>
-              Try it in the Savings Vault
+            <Link href="/investments#/calculator" className={styles.simLink}>
+              Try the growth calculator
               <Icon paths={["M5 12h14", "m13 5 7 7-7 7"]} size={16} />
             </Link>
           </div>
@@ -99,9 +98,15 @@ export default function Simulator() {
             <p className={styles.toolListTitle}>Calculators on the roadmap</p>
             <ul>
               {PLANNED_TOOLS.map((tool) => (
-                <li key={tool}>
-                  {tool}
-                  <span className={styles.toolSoon}>Coming soon</span>
+                <li key={tool.name}>
+                  {tool.href ? (
+                    <Link href={tool.href} className={styles.toolLink}>
+                      {tool.name}
+                    </Link>
+                  ) : (
+                    tool.name
+                  )}
+                  <span className={styles.toolSoon}>{tool.where ?? "Coming soon"}</span>
                 </li>
               ))}
             </ul>

@@ -1445,3 +1445,13 @@
   position: relative;
   z-index: 1;
 }
+
+.toolLink {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.toolLink:hover {
+  color: var(--color-accent);
+}
