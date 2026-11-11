@@ -90,7 +90,7 @@
   margin: 8px 0 0;
   padding: 16px 0 0;
   border: 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-divider);
 }
 
 .scenarioRow,
@@ -130,7 +130,7 @@
 
 .empty {
   padding: 32px;
-  border: 1.5px dashed var(--color-border-strong);
+  border: var(--bw-sm) dashed var(--color-border-strong);
   border-radius: var(--radius-lg);
   text-align: center;
   color: var(--color-muted);
@@ -147,7 +147,7 @@
   align-content: start;
   gap: 4px;
   padding: 18px;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);
@@ -226,7 +226,7 @@
 
 .illustrative {
   padding: 4px 10px;
-  border: 1px dashed var(--color-border-strong);
+  border: var(--bw-sm) dashed var(--color-border-strong);
   border-radius: var(--radius-pill);
   font-size: 0.75rem;
   font-weight: 700;
@@ -252,7 +252,7 @@
 .tableWrap {
   max-height: 360px;
   overflow: auto;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-md);
 }
 
@@ -265,7 +265,7 @@
 .table th,
 .table td {
   padding: 10px 14px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-divider);
   text-align: left;
   white-space: nowrap;
 }
@@ -314,7 +314,7 @@
   display: grid;
   gap: 12px;
   padding: clamp(20px, 3vw, 28px);
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);
@@ -472,7 +472,7 @@
   align-items: center;
   min-height: 56px;
   padding: 12px 16px;
-  border: 1.5px solid var(--color-border);
+  border: var(--bw-sm) solid var(--color-border);
   border-radius: var(--radius-md);
   font-weight: 700;
   background: var(--color-surface);
@@ -539,6 +539,7 @@
     var(--hud-corners), radial-gradient(26rem 16rem at 100% 0%, rgb(var(--accent-rgb) / 0.35), transparent 60%),
     linear-gradient(155deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--color-deep) 100%);
   box-shadow: var(--shadow-lg);
+  border: var(--bw) solid var(--color-border);
 }
 
 .previewEyebrow {

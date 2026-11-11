@@ -6,7 +6,7 @@
   max-width: 720px;
   margin-inline: auto;
   padding: clamp(28px, 5vw, 56px);
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);

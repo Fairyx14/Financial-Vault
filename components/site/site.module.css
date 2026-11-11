@@ -22,9 +22,10 @@
   place-items: center;
   width: 34px;
   height: 34px;
+  border: var(--bw-sm) solid #000;
   border-radius: var(--radius-sm);
   color: #fff;
-  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  background: var(--pop-pink);
   box-shadow: var(--shadow-sm);
   transition: transform 400ms var(--ease);
 }
@@ -33,12 +34,37 @@
   transform: rotate(-12deg) scale(1.05);
 }
 
+/* ---------- Memphis tape strip ---------- */
+.tape {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 6px 16px;
+  overflow: hidden;
+  border-bottom: var(--bw) solid #000;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #000;
+  background: var(--pop-yellow);
+}
+
+.tapeChip {
+  padding: 0 8px;
+  border-radius: 6px;
+  color: var(--pop-yellow);
+  background: #000;
+}
+
 /* ---------- Header ---------- */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid transparent;
+  border-bottom: var(--bw) solid var(--color-border);
   background: var(--header-bg);
   backdrop-filter: saturate(1.4) blur(14px);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
@@ -79,7 +105,7 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1.5px solid var(--color-border-strong);
+  border: var(--bw-sm) solid var(--color-border-strong);
   border-radius: var(--radius-sm);
   color: var(--color-text);
   background: var(--color-surface);
@@ -143,7 +169,7 @@
   text-decoration: none;
   white-space: nowrap;
   background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  box-shadow: 0 8px 20px -10px rgb(var(--primary-rgb) / 0.8);
+  box-shadow: var(--shadow-sm);
   transition:
     transform var(--duration) var(--ease),
     box-shadow var(--duration) var(--ease);
@@ -152,7 +178,7 @@
 .navCta:hover,
 .footerCta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 26px -12px rgb(var(--primary-rgb) / 0.9);
+  box-shadow: var(--shadow-sm);
 }
 
 .menuToggle {
@@ -166,7 +192,7 @@
     place-items: center;
     width: 44px;
     height: 44px;
-    border: 1.5px solid var(--color-border-strong);
+    border: var(--bw-sm) solid var(--color-border-strong);
     border-radius: var(--radius-sm);
     background: var(--color-surface);
     cursor: pointer;
@@ -215,7 +241,7 @@
     align-items: stretch;
     gap: 16px;
     padding: 12px var(--gutter) 24px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-divider);
     background: var(--color-bg);
     box-shadow: 0 24px 40px -24px rgb(var(--shadow-rgb) / 0.45);
   }
@@ -259,7 +285,7 @@
   gap: 4px;
   margin: 0;
   padding: 4px;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-surface-glass);
   list-style: none;
@@ -291,13 +317,13 @@
 .appTabActive:hover {
   color: #fff;
   background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  box-shadow: 0 8px 18px -10px rgb(var(--primary-rgb) / 0.8);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ---------- Footer ---------- */
 .footer {
   margin-top: clamp(56px, 8vw, 96px);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-divider);
   background: var(--color-surface-glass);
 }
 
@@ -357,7 +383,7 @@
   display: grid;
   gap: 10px;
   padding-block: 24px 40px;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-divider);
   font-size: 0.8125rem;
   color: var(--color-muted);
 }

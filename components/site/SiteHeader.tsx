@@ -12,6 +12,15 @@ interface SiteHeaderProps {
   current?: "home" | "vault" | "other";
 }
 
+const TAPE = [
+  "★ Every dream has a date ★",
+  "Saved privately in your browser",
+  "★ No account needed ★",
+  "Savings & Investment Vaults live now",
+  "★ Estimates, not guarantees ★",
+  "Built for clarity, not spreadsheets",
+];
+
 /** Sticky navigation bar with a disclosure menu on small screens. */
 export default function SiteHeader({ current = "other" }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
@@ -47,6 +56,15 @@ export default function SiteHeader({ current = "other" }: SiteHeaderProps) {
   const close = () => setOpen(false);
 
   return (
+    <>
+    {/* Decorative Memphis tape. Still, not scrolling, and every line is true. */}
+    <div className={styles.tape} aria-hidden="true">
+      {TAPE.map((item, i) => (
+        <span key={i} className={i % 3 === 1 ? styles.tapeChip : undefined}>
+          {item}
+        </span>
+      ))}
+    </div>
     <header className={`${styles.header} ${scrolled || open ? styles.headerRaised : ""}`}>
       <div className={`container ${styles.headerInner}`}>
         <Logo />
@@ -93,5 +111,6 @@ export default function SiteHeader({ current = "other" }: SiteHeaderProps) {
         </div>
       </div>
     </header>
+    </>
   );
 }

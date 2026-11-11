@@ -1,27 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Orbitron, Rajdhani, Share_Tech_Mono } from "next/font/google";
+import { Righteous, Space_Grotesk, Space_Mono } from "next/font/google";
 import { THEME_INIT_SCRIPT } from "@/components/site/theme";
 import "./globals.css";
 
-/* Flight-deck type: Orbitron for headings and big numbers, Rajdhani for reading text,
-   Share Tech Mono for small labels. Next.js self-hosts these, so no requests go to Google. */
-const display = Orbitron({
+/* Neo-Memphis arcade type: Righteous for headings and big numbers, Space Grotesk for
+   reading text, Space Mono for small labels. Next.js self-hosts these, so no requests go to Google. */
+const display = Righteous({
   subsets: ["latin"],
-  weight: ["500", "700", "800"],
+  weight: "400",
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Rajdhani({
+const body = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-body",
   display: "swap",
 });
 
-const mono = Share_Tech_Mono({
+const mono = Space_Mono({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eef3f6" },
-    { media: "(prefers-color-scheme: dark)", color: "#05070a" },
+    { media: "(prefers-color-scheme: light)", color: "#faf3e0" },
+    { media: "(prefers-color-scheme: dark)", color: "#120c24" },
   ],
   width: "device-width",
   initialScale: 1,

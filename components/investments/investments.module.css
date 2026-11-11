@@ -79,6 +79,7 @@
     var(--hud-corners), radial-gradient(26rem 16rem at 100% 0%, rgb(var(--accent-rgb) / 0.35), transparent 60%),
     linear-gradient(155deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--color-deep) 100%);
   box-shadow: var(--shadow-lg);
+  border: var(--bw) solid var(--color-border);
 }
 
 .valueLabel {
@@ -145,7 +146,7 @@
   align-content: start;
   gap: 2px;
   padding: 18px 20px;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);
@@ -181,7 +182,7 @@
 
 .fxNote {
   padding: 14px 18px;
-  border: 1px solid var(--color-border-strong);
+  border: var(--bw-sm) solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: var(--color-surface-glass);
   font-size: 0.875rem;
@@ -238,7 +239,7 @@
   gap: 10px;
   min-height: 48px;
   padding: 0 16px;
-  border: 1.5px solid var(--color-border-strong);
+  border: var(--bw-sm) solid var(--color-border-strong);
   border-radius: var(--radius-pill);
   background: var(--color-surface);
   color: var(--color-muted);
@@ -309,7 +310,7 @@
 
 .noResults {
   padding: 32px;
-  border: 1.5px dashed var(--color-border-strong);
+  border: var(--bw-sm) dashed var(--color-border-strong);
   border-radius: var(--radius-lg);
   text-align: center;
   color: var(--color-muted);
@@ -319,7 +320,7 @@
 .tableWrap {
   display: none;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);
@@ -343,7 +344,7 @@
 
 .table thead th {
   padding: 14px 20px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-divider);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -357,7 +358,7 @@
 .table tbody th,
 .table td {
   padding: 16px 20px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-divider);
   text-align: left;
   vertical-align: middle;
 }
@@ -416,7 +417,7 @@
   display: grid;
   gap: 8px;
   padding: 20px;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-xl);
   color: inherit;
   text-decoration: none;
@@ -455,7 +456,7 @@
   gap: 8px;
   margin-top: 6px;
   padding-top: 12px;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-divider);
   font-size: 0.875rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -488,6 +489,7 @@
     var(--hud-corners), radial-gradient(26rem 16rem at 100% 0%, rgb(var(--accent-rgb) / 0.35), transparent 60%),
     linear-gradient(155deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--color-deep) 100%);
   box-shadow: var(--shadow-lg);
+  border: var(--bw) solid var(--color-border);
 }
 
 .previewEyebrow {
@@ -605,7 +607,7 @@
   align-items: center;
   gap: 12px;
   padding: 12px 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-divider);
 }
 
 .historyRow:first-child {
@@ -631,7 +633,7 @@
   gap: 8px;
   min-height: 44px;
   padding: 0 16px 0 8px;
-  border: 1.5px solid var(--color-border-strong);
+  border: var(--bw-sm) solid var(--color-border-strong);
   border-radius: var(--radius-pill);
   font-size: 0.9375rem;
   font-weight: 700;
@@ -684,7 +686,7 @@
   justify-content: space-between;
   gap: 6px 16px;
   padding: 14px 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-divider);
 }
 
 .breakdown > div:first-child {
@@ -764,7 +766,7 @@
 
 .recordedBadge {
   padding: 4px 10px;
-  border: 1px dashed var(--color-border-strong);
+  border: var(--bw-sm) dashed var(--color-border-strong);
   border-radius: var(--radius-pill);
   font-size: 0.75rem;
   font-weight: 700;

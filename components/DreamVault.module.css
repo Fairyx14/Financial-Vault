@@ -28,7 +28,7 @@
   display: grid;
   gap: clamp(28px, 4vw, 40px);
   padding: clamp(20px, 4vw, 40px);
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--hud-corners), var(--color-surface-glass);
   box-shadow: var(--shadow-md);
@@ -84,7 +84,7 @@
   flex-direction: column;
   gap: 4px;
   padding: 16px;
-  border: 1.5px solid var(--color-border);
+  border: var(--bw-sm) solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-surface);
   cursor: pointer;
@@ -207,7 +207,7 @@
   align-items: center;
   min-height: 52px;
   padding-inline: 16px;
-  border: 1.5px solid var(--color-border-strong);
+  border: var(--bw-sm) solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: var(--color-surface);
   transition:
@@ -305,6 +305,7 @@
     var(--hud-corners), radial-gradient(30rem 18rem at 100% 0%, rgb(var(--accent-rgb) / 0.35), transparent 60%),
     linear-gradient(155deg, var(--brand-1) 0%, var(--brand-2) 45%, var(--color-deep) 100%);
   box-shadow: var(--shadow-lg);
+  border: var(--bw) solid var(--color-border);
 }
 
 .results::before {

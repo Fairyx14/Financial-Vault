@@ -36,7 +36,7 @@
   gap: 12px;
   min-width: 0;
   padding: clamp(20px, 3vw, 28px);
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);
@@ -66,7 +66,7 @@
 
 .badge {
   padding: 4px 10px;
-  border: 1px dashed var(--color-border-strong);
+  border: var(--bw-sm) dashed var(--color-border-strong);
   border-radius: var(--radius-pill);
   font-size: 0.75rem;
   font-weight: 700;
@@ -75,7 +75,7 @@
 
 .empty {
   padding: 28px 20px;
-  border: 1.5px dashed var(--color-border-strong);
+  border: var(--bw-sm) dashed var(--color-border-strong);
   border-radius: var(--radius-lg);
   text-align: center;
   color: var(--color-muted);
@@ -129,7 +129,7 @@
 .tableToggle {
   min-height: 36px;
   padding: 0 14px;
-  border: 1.5px solid var(--color-border-strong);
+  border: var(--bw-sm) solid var(--color-border-strong);
   border-radius: var(--radius-pill);
   font-size: 0.8125rem;
   font-weight: 700;
@@ -225,7 +225,7 @@
   gap: 4px;
   min-width: 180px;
   padding: 10px 12px;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-surface);
   box-shadow: var(--shadow-md);
@@ -259,7 +259,7 @@
 .tableWrap {
   max-height: 320px;
   overflow: auto;
-  border: 1px solid var(--color-border);
+  border: var(--bw) solid var(--color-border);
   border-radius: var(--radius-md);
 }
 
@@ -272,7 +272,7 @@
 .table th,
 .table td {
   padding: 10px 14px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-divider);
   text-align: left;
 }
 
