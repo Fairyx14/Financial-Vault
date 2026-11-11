@@ -90,8 +90,8 @@ export default function DashboardPreview() {
             <svg viewBox={`0 0 ${W} ${H}`} className={styles.dashSvg} role="img" aria-label="Example line chart: net worth rising from £71,200 to £86,400 over 12 months.">
               <defs>
                 <linearGradient id="dash-area" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+                  <stop offset="0%" style={{ stopColor: "var(--color-primary)" }} stopOpacity="0.2" />
+                  <stop offset="100%" style={{ stopColor: "var(--color-primary)" }} stopOpacity="0" />
                 </linearGradient>
               </defs>
               {[70, 75, 80, 85, 90].map((tick) => (

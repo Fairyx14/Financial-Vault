@@ -1,18 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Orbitron, Rajdhani, Share_Tech_Mono } from "next/font/google";
 import { THEME_INIT_SCRIPT } from "@/components/site/theme";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+/* Flight-deck type: Orbitron for headings and big numbers, Rajdhani for reading text,
+   Share Tech Mono for small labels. Next.js self-hosts these, so no requests go to Google. */
+const display = Orbitron({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Manrope({
+const body = Rajdhani({
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
   variable: "--font-body",
+  display: "swap",
+});
+
+const mono = Share_Tech_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -42,7 +52,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#7C3AED",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#eef3f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#05070a" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -50,7 +63,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     // suppressHydrationWarning: the theme script may set data-theme before React loads.
-    <html lang="en" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>

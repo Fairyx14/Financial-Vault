@@ -8,7 +8,7 @@
   padding: clamp(28px, 5vw, 56px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  background: var(--color-surface);
+  background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);
 }
 
@@ -17,12 +17,14 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--color-secondary);
 }
 
 .title {
   margin-top: 8px;
   font-family: var(--font-display);
+  font-size-adjust: var(--display-adjust);
   font-size: clamp(2.25rem, 6vw, 3.25rem);
   font-weight: 600;
   line-height: 1.05;

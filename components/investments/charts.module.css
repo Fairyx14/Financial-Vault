@@ -12,6 +12,7 @@
 
 .sectionTitle {
   font-family: var(--font-display);
+  font-size-adjust: var(--display-adjust);
   font-size: 1.875rem;
   font-weight: 600;
   line-height: 1.15;
@@ -37,7 +38,7 @@
   padding: clamp(20px, 3vw, 28px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  background: var(--color-surface);
+  background: var(--hud-corners), var(--color-surface);
   box-shadow: var(--shadow-sm);
 }
 
@@ -51,6 +52,7 @@
 
 .cardTitle {
   font-family: var(--font-display);
+  font-size-adjust: var(--display-adjust);
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.2;
@@ -65,7 +67,7 @@
 .badge {
   padding: 4px 10px;
   border: 1px dashed var(--color-border-strong);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--color-secondary);
@@ -128,7 +130,7 @@
   min-height: 36px;
   padding: 0 14px;
   border: 1.5px solid var(--color-border-strong);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--color-secondary);
@@ -281,6 +283,7 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--color-muted);
   background: var(--color-hover-tint);
 }
@@ -360,11 +363,13 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--color-muted);
 }
 
 .donutValue {
   font-family: var(--font-display);
+  font-size-adjust: var(--display-adjust);
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 1.1;

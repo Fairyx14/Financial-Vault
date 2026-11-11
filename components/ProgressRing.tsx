@@ -21,7 +21,7 @@ export default function ProgressRing({ progress, caption }: ProgressRingProps) {
         <defs>
           <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="100%" stopColor="#C4B5FD" />
+            <stop offset="100%" style={{ stopColor: "var(--color-accent)" }} />
           </linearGradient>
         </defs>
         <circle cx={SIZE / 2} cy={SIZE / 2} r={RADIUS} className={styles.ringTrack} strokeWidth={STROKE} />

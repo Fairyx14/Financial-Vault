@@ -1,39 +1,41 @@
-/* ---------- Design tokens ----------
-   Light values here; dark values in the two blocks below.
-   --brand-1/2 never change: they paint the purple gradients that carry white text. */
+/* ---------- Design tokens: Dream Vault flight deck ----------
+   Light values here are the "daylight HUD"; the dark flight-deck values are in the
+   two blocks below (keep those two identical). --brand-1/2 paint the glowing
+   primary panels and buttons, which always carry white text. */
 :root {
-  --brand-1: #7c3aed;
-  --brand-2: #6d28d9;
+  --brand-1: #00687a;
+  --brand-2: #0a3a50;
+  --color-deep: #061620;
 
-  /* Brand colour used for text, outlines and chart lines on page surfaces */
-  --color-primary: #7c3aed;
-  --color-secondary: #6d28d9;
-  --color-accent: #c4b5fd;
-  --color-bg: #faf5ff;
-  --color-text: #1e1b4b;
+  /* Accent colour for text, outlines and chart lines on page surfaces */
+  --color-primary: #00778a;
+  --color-secondary: #8f4f00;
+  --color-accent: #ffecb8;
+  --color-bg: #eef3f6;
+  --color-text: #0b1722;
 
-  --color-deep: #2e1065;
   --color-surface: #ffffff;
-  --color-surface-glass: rgb(255 255 255 / 0.85);
-  --color-tint: #f1e9ff;
-  --color-hover-tint: #f7f1ff;
-  --color-muted: #4b4878; /* 7.9:1 on the background */
-  --color-placeholder: #8a86b0;
-  --color-border: #e7dcfb;
-  --color-border-strong: #cdb9f7;
-  --color-error: #b42318;
+  --color-surface-glass: rgb(255 255 255 / 0.88);
+  --color-tint: #e1f1f4;
+  --color-hover-tint: #eef7f9;
+  --color-muted: #405366;
+  --color-placeholder: #64788a;
+  --color-border: #cfdde5;
+  --color-border-strong: #93b8c6;
+  --color-border-hover: #4fa3b3;
+  --color-error: #c0153f;
 
-  --good-text: #067647;
-  --good-bg: #ecfdf3;
-  --warn-text: #93370d;
-  --warn-bg: #fffaeb;
-  --warn-border: #f5c66a;
-  --danger-solid: #b42318;
-  --danger-bg: #fef3f2;
-  --danger-border: #f4c7c3;
+  --good-text: #05703a;
+  --good-bg: #e3f7ec;
+  --warn-text: #8a4b00;
+  --warn-bg: #fff4dc;
+  --warn-border: #f2c55c;
+  --danger-solid: #c0153f;
+  --danger-bg: #fdecef;
+  --danger-border: #f3b7c4;
 
-  --chart-plan: #6b6894;
-  --chart-grid: #efe8fb;
+  --chart-plan: #6b7d8c;
+  --chart-grid: #e3ebf0;
 
   /* Category colours for charts, in a fixed order validated for colour-blind separation.
      Each investment category always uses the same slot (see components/investments/categoryColors.ts). */
@@ -46,26 +48,48 @@
   --cat-7: #6250d6;
   --cat-8: #e34948;
 
-  --glow-1: rgb(196 181 253 / 0.45);
-  --glow-2: rgb(124 58 237 / 0.08);
-  --glow-hero: rgb(196 181 253 / 0.55);
-  --band-1: rgb(196 181 253 / 0.28);
-  --band-2: rgb(243 236 255 / 0.65);
-  --band-3: rgb(243 236 255 / 0.25);
-  --header-bg: rgb(250 245 255 / 0.7);
-  --header-bg-raised: rgb(250 245 255 / 0.9);
+  /* Space-separated RGB triples, used as rgb(var(--x-rgb) / alpha) for glows and tints */
+  --primary-rgb: 0 119 138;
+  --accent-rgb: 0 180 200;
+  --shadow-rgb: 6 18 28;
 
-  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --glow-1: rgb(0 180 200 / 0.1);
+  --glow-2: rgb(255 183 3 / 0.06);
+  --glow-hero: rgb(0 200 220 / 0.18);
+  --band-1: rgb(0 180 200 / 0.08);
+  --band-2: rgb(225 241 244 / 0.6);
+  --band-3: rgb(225 241 244 / 0.2);
+  --header-bg: rgb(238 243 246 / 0.82);
+  --header-bg-raised: rgb(238 243 246 / 0.95);
 
-  --radius-xl: 28px;
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
+  /* HUD details */
+  --hud-corner: #00778a;
+  --grid-line: rgb(0 120 138 / 0.06);
+  --scanline-opacity: 0;
 
-  --shadow-sm: 0 1px 2px rgb(30 27 75 / 0.05), 0 4px 14px -6px rgb(124 58 237 / 0.12);
-  --shadow-md: 0 2px 4px rgb(30 27 75 / 0.04), 0 14px 32px -12px rgb(124 58 237 / 0.25);
-  --shadow-lg: 0 30px 70px -28px rgb(46 16 101 / 0.55);
+  --font-display: "Orbitron", "Rajdhani", system-ui, sans-serif;
+  --font-body: "Rajdhani", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Share Tech Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  /* Orbitron is very wide; this shrinks it to the visual size the layouts were designed for. */
+  --display-adjust: 0.4;
+
+  --radius-xl: 6px;
+  --radius-lg: 4px;
+  --radius-md: 3px;
+  --radius-sm: 2px;
+  --radius-pill: 3px;
+
+  /* Cyan bracket corners, added as extra background layers on HUD panels:
+     background: var(--hud-corners), <the panel's own background>; */
+  --hud-corners:
+    linear-gradient(var(--hud-corner), var(--hud-corner)) left top / 12px 2px no-repeat,
+    linear-gradient(var(--hud-corner), var(--hud-corner)) left top / 2px 12px no-repeat,
+    linear-gradient(var(--hud-corner), var(--hud-corner)) right bottom / 12px 2px no-repeat,
+    linear-gradient(var(--hud-corner), var(--hud-corner)) right bottom / 2px 12px no-repeat;
+
+  --shadow-sm: 0 1px 2px rgb(6 18 28 / 0.06), 0 6px 18px -8px rgb(0 120 138 / 0.18);
+  --shadow-md: 0 2px 4px rgb(6 18 28 / 0.05), 0 14px 32px -12px rgb(0 120 138 / 0.25);
+  --shadow-lg: 0 0 0 1px rgb(0 120 138 / 0.15), 0 30px 70px -28px rgb(6 18 28 / 0.45);
 
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --duration: 220ms;
@@ -74,78 +98,96 @@
   color-scheme: light;
 }
 
-/* Dark palette. Applied when the visitor picks dark, or when their device
-   prefers dark and they haven't chosen light. Keep both blocks identical. */
+/* Dark flight deck. Applied when the visitor picks dark, or when their device
+   prefers dark and they have not chosen light. Keep both blocks identical. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-primary: #a78bfa;
-    --color-secondary: #b9a6fd;
-    --color-bg: #0f0b1e;
-    --color-text: #efeafe;
-    --color-surface: #191331;
-    --color-surface-glass: rgb(25 19 49 / 0.88);
-    --color-tint: #261d4a;
-    --color-hover-tint: #221a42;
-    --color-muted: #b3acd6;
-    --color-placeholder: #7f78a8;
-    --color-border: #2c2450;
-    --color-border-strong: #463a7c;
-    --color-error: #fda29b;
-    --good-text: #75e0a7;
-    --good-bg: rgb(6 118 71 / 0.24);
-    --warn-text: #fec84b;
-    --warn-bg: rgb(181 71 8 / 0.24);
-    --warn-border: rgb(254 200 75 / 0.4);
-    --danger-bg: rgb(180 35 24 / 0.2);
-    --danger-border: rgb(253 162 155 / 0.45);
-    --chart-plan: #6c6790;
-    --chart-grid: #2a2249;
-  --cat-1: #3987e5;
-  --cat-2: #d95926;
-  --cat-3: #199e70;
-  --cat-4: #c98500;
-  --cat-5: #d55181;
-  --cat-6: #008300;
-  --cat-7: #9085e9;
-  --cat-8: #e66767;
-    --glow-1: rgb(124 58 237 / 0.22);
-    --glow-2: rgb(124 58 237 / 0.1);
-    --glow-hero: rgb(124 58 237 / 0.32);
-    --band-1: rgb(124 58 237 / 0.14);
-    --band-2: rgb(38 29 74 / 0.55);
-    --band-3: rgb(38 29 74 / 0.2);
-    --header-bg: rgb(15 11 30 / 0.7);
-    --header-bg-raised: rgb(15 11 30 / 0.9);
-    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 14px -6px rgb(0 0 0 / 0.45);
-    --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 14px 32px -12px rgb(0 0 0 / 0.6);
-    --shadow-lg: 0 30px 70px -28px rgb(0 0 0 / 0.8);
+    --brand-1: #0b4f5c;
+    --brand-2: #0c2c40;
+    --color-deep: #060a12;
+    --color-primary: #00f3ff;
+    --color-secondary: #ffb703;
+    --color-accent: #7df9ff;
+    --color-bg: #05070a;
+    --color-text: #e2f1f8;
+    --color-surface: #0d131f;
+    --color-surface-glass: rgb(13 19 31 / 0.88);
+    --color-tint: #10202c;
+    --color-hover-tint: #0f1a27;
+    --color-muted: #9fb3c4;
+    --color-placeholder: #6f8597;
+    --color-border: #16303c;
+    --color-border-strong: #1f5563;
+    --color-border-hover: rgb(0 243 255 / 0.55);
+    --color-error: #ff4d79;
+    --good-text: #00e676;
+    --good-bg: rgb(0 255 102 / 0.1);
+    --warn-text: #ffb703;
+    --warn-bg: rgb(255 183 3 / 0.1);
+    --warn-border: rgb(255 183 3 / 0.4);
+    --danger-solid: #c8003c;
+    --danger-bg: rgb(255 0 85 / 0.12);
+    --danger-border: rgb(255 0 85 / 0.45);
+    --chart-plan: #6f8597;
+    --chart-grid: #13232f;
+    --cat-1: #3987e5;
+    --cat-2: #d95926;
+    --cat-3: #199e70;
+    --cat-4: #c98500;
+    --cat-5: #d55181;
+    --cat-6: #008300;
+    --cat-7: #9085e9;
+    --cat-8: #e66767;
+    --primary-rgb: 0 243 255;
+    --accent-rgb: 0 243 255;
+    --shadow-rgb: 0 0 0;
+    --glow-1: rgb(0 243 255 / 0.08);
+    --glow-2: rgb(255 0 85 / 0.04);
+    --glow-hero: rgb(0 243 255 / 0.12);
+    --band-1: rgb(0 243 255 / 0.06);
+    --band-2: rgb(13 19 31 / 0.6);
+    --band-3: rgb(13 19 31 / 0.2);
+    --header-bg: rgb(9 13 20 / 0.85);
+    --header-bg-raised: rgb(9 13 20 / 0.95);
+    --hud-corner: #00f3ff;
+    --grid-line: rgb(0 243 255 / 0.035);
+    --scanline-opacity: 0.35;
+    --shadow-sm: 0 0 0 1px rgb(0 243 255 / 0.04), 0 8px 24px -8px rgb(0 0 0 / 0.8);
+    --shadow-md: 0 0 18px rgb(0 243 255 / 0.08), 0 14px 32px -12px rgb(0 0 0 / 0.85);
+    --shadow-lg: 0 0 25px rgb(0 243 255 / 0.18), 0 24px 60px -24px rgb(0 0 0 / 0.9);
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --color-primary: #a78bfa;
-  --color-secondary: #b9a6fd;
-  --color-bg: #0f0b1e;
-  --color-text: #efeafe;
-  --color-surface: #191331;
-  --color-surface-glass: rgb(25 19 49 / 0.88);
-  --color-tint: #261d4a;
-  --color-hover-tint: #221a42;
-  --color-muted: #b3acd6;
-  --color-placeholder: #7f78a8;
-  --color-border: #2c2450;
-  --color-border-strong: #463a7c;
-  --color-error: #fda29b;
-  --good-text: #75e0a7;
-  --good-bg: rgb(6 118 71 / 0.24);
-  --warn-text: #fec84b;
-  --warn-bg: rgb(181 71 8 / 0.24);
-  --warn-border: rgb(254 200 75 / 0.4);
-  --danger-bg: rgb(180 35 24 / 0.2);
-  --danger-border: rgb(253 162 155 / 0.45);
-  --chart-plan: #6c6790;
-  --chart-grid: #2a2249;
+  --brand-1: #0b4f5c;
+  --brand-2: #0c2c40;
+  --color-deep: #060a12;
+  --color-primary: #00f3ff;
+  --color-secondary: #ffb703;
+  --color-accent: #7df9ff;
+  --color-bg: #05070a;
+  --color-text: #e2f1f8;
+  --color-surface: #0d131f;
+  --color-surface-glass: rgb(13 19 31 / 0.88);
+  --color-tint: #10202c;
+  --color-hover-tint: #0f1a27;
+  --color-muted: #9fb3c4;
+  --color-placeholder: #6f8597;
+  --color-border: #16303c;
+  --color-border-strong: #1f5563;
+  --color-border-hover: rgb(0 243 255 / 0.55);
+  --color-error: #ff4d79;
+  --good-text: #00e676;
+  --good-bg: rgb(0 255 102 / 0.1);
+  --warn-text: #ffb703;
+  --warn-bg: rgb(255 183 3 / 0.1);
+  --warn-border: rgb(255 183 3 / 0.4);
+  --danger-solid: #c8003c;
+  --danger-bg: rgb(255 0 85 / 0.12);
+  --danger-border: rgb(255 0 85 / 0.45);
+  --chart-plan: #6f8597;
+  --chart-grid: #13232f;
   --cat-1: #3987e5;
   --cat-2: #d95926;
   --cat-3: #199e70;
@@ -154,17 +196,23 @@
   --cat-6: #008300;
   --cat-7: #9085e9;
   --cat-8: #e66767;
-  --glow-1: rgb(124 58 237 / 0.22);
-  --glow-2: rgb(124 58 237 / 0.1);
-  --glow-hero: rgb(124 58 237 / 0.32);
-  --band-1: rgb(124 58 237 / 0.14);
-  --band-2: rgb(38 29 74 / 0.55);
-  --band-3: rgb(38 29 74 / 0.2);
-  --header-bg: rgb(15 11 30 / 0.7);
-  --header-bg-raised: rgb(15 11 30 / 0.9);
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 14px -6px rgb(0 0 0 / 0.45);
-  --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 14px 32px -12px rgb(0 0 0 / 0.6);
-  --shadow-lg: 0 30px 70px -28px rgb(0 0 0 / 0.8);
+  --primary-rgb: 0 243 255;
+  --accent-rgb: 0 243 255;
+  --shadow-rgb: 0 0 0;
+  --glow-1: rgb(0 243 255 / 0.08);
+  --glow-2: rgb(255 0 85 / 0.04);
+  --glow-hero: rgb(0 243 255 / 0.12);
+  --band-1: rgb(0 243 255 / 0.06);
+  --band-2: rgb(13 19 31 / 0.6);
+  --band-3: rgb(13 19 31 / 0.2);
+  --header-bg: rgb(9 13 20 / 0.85);
+  --header-bg-raised: rgb(9 13 20 / 0.95);
+  --hud-corner: #00f3ff;
+  --grid-line: rgb(0 243 255 / 0.035);
+  --scanline-opacity: 0.35;
+  --shadow-sm: 0 0 0 1px rgb(0 243 255 / 0.04), 0 8px 24px -8px rgb(0 0 0 / 0.8);
+  --shadow-md: 0 0 18px rgb(0 243 255 / 0.08), 0 14px 32px -12px rgb(0 0 0 / 0.85);
+  --shadow-lg: 0 0 25px rgb(0 243 255 / 0.18), 0 24px 60px -24px rgb(0 0 0 / 0.9);
   color-scheme: dark;
 }
 
@@ -184,19 +232,35 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.55;
   color: var(--color-text);
   background-color: var(--color-bg);
+  /* Soft glows plus the flight-deck grid */
   background-image:
-    radial-gradient(60rem 30rem at 85% -10%, var(--glow-1), transparent 70%),
-    radial-gradient(40rem 24rem at -10% 20%, var(--glow-2), transparent 70%);
-  background-repeat: no-repeat;
+    radial-gradient(60rem 30rem at 50% -10%, var(--glow-1), transparent 70%),
+    radial-gradient(40rem 24rem at -10% 20%, var(--glow-2), transparent 70%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
   transition:
     background-color var(--duration) var(--ease),
     color var(--duration) var(--ease);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Faint CRT scanlines in dark mode only. Purely decorative and never blocks clicks. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: linear-gradient(rgb(0 0 0 / 0) 50%, rgb(0 0 0 / 0.18) 50%);
+  background-size: 100% 4px;
+  opacity: var(--scanline-opacity);
 }
 
 h1,
@@ -206,11 +270,24 @@ p {
   margin: 0;
 }
 
-/* The display serif defaults to old-style figures; lining figures read better for money. */
 h1,
 h2,
 h3 {
   font-variant-numeric: lining-nums;
+}
+
+/* Flight-deck headings: wide, upper-case and lightly tracked. */
+h1,
+h2 {
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+}
+
+input,
+select,
+textarea {
+  font-weight: 600;
 }
 
 button,
@@ -230,8 +307,8 @@ main:focus {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: #1e1b4b;
+  background: var(--color-primary);
+  color: var(--color-bg);
 }
 
 .container {
@@ -290,12 +367,14 @@ main:focus {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--color-secondary);
 }
 
 .hero__title {
   max-width: 16ch;
   font-family: var(--font-display);
+  font-size-adjust: var(--display-adjust);
   font-size: clamp(2.5rem, 7vw, 4.75rem);
   font-weight: 600;
   line-height: 1.02;

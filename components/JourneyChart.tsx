@@ -180,8 +180,8 @@ export default function JourneyChart({ goal, currency }: { goal: SavedGoal; curr
         <svg width={width} height={HEIGHT} className={styles.chartSvg} aria-hidden="true">
           <defs>
             <linearGradient id={`area-${goal.id}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+              <stop offset="0%" style={{ stopColor: "var(--color-primary)" }} stopOpacity="0.22" />
+              <stop offset="100%" style={{ stopColor: "var(--color-primary)" }} stopOpacity="0" />
             </linearGradient>
           </defs>
 
