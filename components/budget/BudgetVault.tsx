@@ -1,25 +1,57 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Icon from "@/components/Icon";
 import { copyBudgets, monthRange, occurrences, type Frequency } from "@/lib/budget";
 import { formatDay, todayISO } from "@/lib/vault";
 import ConfirmDialog, { type ConfirmRequest } from "../ConfirmDialog";
 import { useHashPath } from "../useHashPath";
-import AnalyticsView from "./AnalyticsView";
-import BillsView from "./BillsView";
-import CalendarView from "./CalendarView";
-import ExportView from "./ExportView";
-import SavingsView from "./SavingsView";
 import BudgetDashboard from "./BudgetDashboard";
-import BudgetsView from "./BudgetsView";
 import { monthLabel } from "./MonthPicker";
 import EntryList from "./EntryList";
-import { ExpenseForm, IncomeForm } from "./RecordForms";
 import { useBudget } from "./useBudget";
 import vault from "../Vault.module.css";
 import tabs from "../investments/planning.module.css";
 import styles from "./budget.module.css";
+
+/*
+ * The dashboard and lists load with the page. Every other screen downloads only when it's
+ * first opened (or when its tab is pointed at or focused), so the first visit is lighter.
+ */
+const loadAnalytics = () => import("./AnalyticsView");
+const loadBills = () => import("./BillsView");
+const loadBudgets = () => import("./BudgetsView");
+const loadCalendar = () => import("./CalendarView");
+const loadExport = () => import("./ExportView");
+const loadSavings = () => import("./SavingsView");
+const loadForms = () => import("./RecordForms");
+
+function Loading() {
+  return (
+    <p className={vault.loading} aria-busy="true">
+      Loading…
+    </p>
+  );
+}
+
+const AnalyticsView = dynamic(loadAnalytics, { loading: Loading });
+const BillsView = dynamic(loadBills, { loading: Loading });
+const BudgetsView = dynamic(loadBudgets, { loading: Loading });
+const CalendarView = dynamic(loadCalendar, { loading: Loading });
+const ExportView = dynamic(loadExport, { loading: Loading });
+const SavingsView = dynamic(loadSavings, { loading: Loading });
+const IncomeForm = dynamic(() => loadForms().then((m) => m.IncomeForm), { loading: Loading });
+const ExpenseForm = dynamic(() => loadForms().then((m) => m.ExpenseForm), { loading: Loading });
+
+const PRELOAD: Partial<Record<string, () => Promise<unknown>>> = {
+  analytics: loadAnalytics,
+  bills: loadBills,
+  budgets: loadBudgets,
+  calendar: loadCalendar,
+  export: loadExport,
+  savings: loadSavings,
+};
 
 type Tab = "dashboard" | "income" | "expenses" | "budgets" | "bills" | "calendar" | "analytics" | "savings" | "export";
 
@@ -78,11 +110,26 @@ export default function BudgetVault() {
       firstView.current = false;
       return;
     }
-    const heading = document.querySelector<HTMLElement>("[data-view-heading]");
-    if (!heading) return;
-    heading.focus({ preventScroll: true });
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    (heading.closest("section") ?? heading).scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" });
+    const focusHeading = (heading: HTMLElement) => {
+      heading.focus({ preventScroll: true });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      (heading.closest("section") ?? heading).scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" });
+    };
+    const ready = document.querySelector<HTMLElement>("[data-view-heading]");
+    if (ready) return focusHeading(ready);
+    // A screen that's still downloading has no heading yet: wait for it (up to 10 seconds).
+    const observer = new MutationObserver(() => {
+      const heading = document.querySelector<HTMLElement>("[data-view-heading]");
+      if (!heading) return;
+      observer.disconnect();
+      focusHeading(heading);
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    const timeout = window.setTimeout(() => observer.disconnect(), 10_000);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(timeout);
+    };
   }, [routeKey, data === null]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!data) {
@@ -267,7 +314,16 @@ export default function BudgetVault() {
       )}
       <nav aria-label="Budget Vault sections" className={`${tabs.tabs} ${styles.vaultTabs}`}>
         {TABS.map((t) => (
-          <a key={t.id} href={t.href} className={`${tabs.tab} ${t.id === tab ? tabs.tabActive : ""}`} aria-current={t.id === tab ? "page" : undefined}>
+          <a
+            key={t.id}
+            href={t.href}
+            className={`${tabs.tab} ${t.id === tab ? tabs.tabActive : ""}`}
+            aria-current={t.id === tab ? "page" : undefined}
+            // Start downloading a screen as soon as someone heads for its tab.
+            onPointerEnter={() => PRELOAD[t.id]?.()}
+            onFocus={() => PRELOAD[t.id]?.()}
+            onTouchStart={() => PRELOAD[t.id]?.()}
+          >
             <Icon paths={t.icon} size={16} />
             {t.label}
           </a>

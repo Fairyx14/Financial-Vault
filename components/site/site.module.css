@@ -363,6 +363,18 @@
   list-style: none;
 }
 
+/* Very narrow screens (or 400% zoom): let the two columns share the width instead of overflowing. */
+@media (max-width: 400px) {
+  .footerNav ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 16px;
+  }
+
+  .footerInner > * {
+    min-width: 0;
+  }
+}
+
 .footerNav a {
   display: inline-flex;
   min-height: 40px;

@@ -165,7 +165,7 @@
 
 .axis {
   fill: var(--color-muted);
-  font-size: 11px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -208,7 +208,7 @@
 
 .endLabel {
   fill: var(--color-text);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
 }
 

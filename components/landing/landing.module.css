@@ -449,7 +449,8 @@
   border-radius: var(--radius-lg);
   background: var(--color-surface-glass);
   box-shadow: var(--shadow-md);
-  animation: float 6s ease-in-out infinite;
+  /* Two gentle floats (5s in all), then still: moving content stops within 5 seconds (WCAG 2.2.2). */
+  animation: float 2.5s ease-in-out 2;
 }
 
 @keyframes float {
@@ -470,7 +471,7 @@
   top: 22%;
   right: -8%;
   width: 168px;
-  animation-delay: -3s;
+  animation-delay: -1.25s;
 }
 
 @media (max-width: 560px) {
@@ -940,7 +941,7 @@
 
 .dashAxis {
   fill: var(--color-muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .dashLine {

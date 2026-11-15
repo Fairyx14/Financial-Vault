@@ -21,7 +21,8 @@ const body = Space_Grotesk({
 
 const mono = Space_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  // Only the bold is used (labels, dates, tags), so the regular weight isn't downloaded.
+  weight: "700",
   variable: "--font-mono",
   display: "swap",
 });
