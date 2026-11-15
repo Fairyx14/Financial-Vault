@@ -163,7 +163,7 @@ export default function DashboardPreview() {
           <Icon paths={["M5 12h14", "m13 5 7 7-7 7"]} size={18} />
         </Link>
         <p className={styles.smallNote}>
-          Savings goals and investments are tracked today, each in its own vault. Spending, net-worth and the combined
+          Savings goals, investments and income and spending are tracked today, each in its own vault. Net worth and the combined
           dashboard are coming soon.
         </p>
       </div>

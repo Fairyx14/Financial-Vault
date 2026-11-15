@@ -16,7 +16,7 @@ const TAPE = [
   "★ Every dream has a date ★",
   "Saved privately in your browser",
   "★ No account needed ★",
-  "Savings & Investment Vaults live now",
+  "Savings, Investment & Budget Vaults live now",
   "★ Estimates, not guarantees ★",
   "Built for clarity, not spreadsheets",
 ];

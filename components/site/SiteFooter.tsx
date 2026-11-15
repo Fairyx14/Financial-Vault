@@ -30,6 +30,9 @@ export default function SiteFooter() {
               <Link href="/investments">Investment Vault</Link>
             </li>
             <li>
+              <Link href="/budget">Budget Vault</Link>
+            </li>
+            <li>
               <Link href="/privacy">Privacy</Link>
             </li>
             <li>
@@ -46,7 +49,7 @@ export default function SiteFooter() {
           projections.
         </p>
         <p>
-          © <CurrentYear /> Dream Vault. Your savings goals and investments are stored in your browser on this device only.
+          © <CurrentYear /> Dream Vault. Your savings goals, investments and budget are stored in your browser on this device only.
         </p>
       </div>
     </footer>

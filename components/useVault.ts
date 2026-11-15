@@ -21,6 +21,13 @@ export function useVault() {
 
   useEffect(() => {
     setVault(loadVault());
+    // The Budget Vault can add a confirmed deposit from another tab. Reload rather than
+    // overwrite it with this tab's older copy.
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === "dream-vault:v1") setVault(loadVault());
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   useEffect(() => {

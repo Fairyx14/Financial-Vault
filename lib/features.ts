@@ -42,9 +42,10 @@ export const FEATURES: Feature[] = [
     name: "Budget Vault",
     tagline: "Give every pound a purpose.",
     description:
-      "Track income and expenses, create monthly budgets, organise spending categories and understand where your money goes.",
+      "Track income and expenses, set category budgets, manage bills and subscriptions, see charts and a cash-flow calendar, plan money for your savings goals and export your data.",
     icon: ["M3 7a2 2 0 0 1 2-2h13v4", "M3 7v11a2 2 0 0 0 2 2h15V9H5a2 2 0 0 1-2-2Z", "M16 14.5h.01"],
-    status: "coming-soon",
+    status: "available",
+    href: "/budget",
   },
   {
     id: "wealth",

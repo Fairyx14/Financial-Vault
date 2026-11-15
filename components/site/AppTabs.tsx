@@ -10,6 +10,12 @@ const TABS = [
     icon: ["M4 5h16v14H4z", "M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"],
   },
   { id: "investments", label: "Investment Vault", href: "/investments", icon: ["M3 17l6-6 4 4 8-8", "M15 7h6v6"] },
+  {
+    id: "budget",
+    label: "Budget Vault",
+    href: "/budget",
+    icon: ["M3 7a2 2 0 0 1 2-2h13v4", "M3 7v11a2 2 0 0 0 2 2h15V9H5a2 2 0 0 1-2-2Z", "M16 14.5h.01"],
+  },
 ] as const;
 
 /** Switches between the working vaults. Shown at the top of each app page. */
