@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import type { AuthError, SupabaseClient } from "@supabase/supabase-js";
 import planner from "../DreamVault.module.css";
 import vault from "../Vault.module.css";
@@ -13,7 +13,7 @@ export function authMessage(error: AuthError | Error | null | undefined): string
   if (!error) return "";
   const text = `${"code" in error ? error.code : ""} ${error.message}`.toLowerCase();
   if (text.includes("invalid login") || text.includes("invalid_credentials")) return "That email and password don't match an account.";
-  if (text.includes("not confirmed")) return "Please confirm your email address first. Check your inbox for the link we sent.";
+  if (text.includes("not confirmed")) return "Please confirm your email address first. Check your inbox (and spam) for the newest link we sent, or send a new one below.";
   if (text.includes("already registered") || text.includes("user_already_exists")) return "There's already an account with this email. Sign in instead.";
   if (text.includes("weak") || text.includes("password should")) return `Choose a stronger password: at least ${MIN_PASSWORD} characters, ideally a mix of words, numbers and symbols.`;
   if (text.includes("rate") || text.includes("too many")) return "Too many attempts. Please wait a minute and try again.";
@@ -93,6 +93,35 @@ export function AuthPanel({ supabase }: { supabase: SupabaseClient }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [needsConfirming, setNeedsConfirming] = useState(false);
+
+  // An email link that has expired or was already used comes back with an error in the
+  // address. Explain it instead of silently showing the form, then tidy the address bar.
+  useEffect(() => {
+    const params = new URLSearchParams(`${window.location.search.slice(1)}&${window.location.hash.slice(1)}`);
+    const code = params.get("error_code");
+    if (!code && !params.get("error")) return;
+    setError(
+      code === "otp_expired"
+        ? "That email link has expired or was already used. If you were confirming your email, sign in below and we'll offer to send a new link."
+        : "That email link didn't work. Please try signing in, or request a new link.",
+    );
+    window.history.replaceState(null, "", window.location.pathname);
+  }, []);
+
+  const resendConfirmation = async () => {
+    setBusy(true);
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email: email.trim(),
+      options: { emailRedirectTo: `${window.location.origin}${window.location.pathname}` },
+    });
+    setBusy(false);
+    if (error) return setError(authMessage(error));
+    setError("");
+    setNeedsConfirming(false);
+    setNotice(`We've sent a new confirmation link to ${email.trim()}. Use the newest email: earlier links stop working.`);
+  };
 
   const errors: { email?: string; password?: string; confirm?: string } = {};
   if (!looksLikeEmail(email)) errors.email = "Enter your email address, for example name@example.com.";
@@ -118,13 +147,17 @@ export function AuthPanel({ supabase }: { supabase: SupabaseClient }) {
     setSubmitted(true);
     setError("");
     setNotice("");
+    setNeedsConfirming(false);
     if (Object.keys(errors).length) return focusFirstError();
     setBusy(true);
     try {
       const here = `${window.location.origin}${window.location.pathname}`;
       if (mode === "sign-in") {
         const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
-        if (error) setError(authMessage(error));
+        if (error) {
+          setError(authMessage(error));
+          setNeedsConfirming(/not confirmed|email_not_confirmed/i.test(`${error.code ?? ""} ${error.message}`));
+        }
       } else if (mode === "sign-up") {
         const { data, error } = await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: here } });
         if (error) setError(authMessage(error));
@@ -200,6 +233,11 @@ export function AuthPanel({ supabase }: { supabase: SupabaseClient }) {
           <p className={vault.formError} role="alert">
             {error}
           </p>
+        )}
+        {needsConfirming && (
+          <button type="button" className={vault.buttonSecondary} onClick={resendConfirmation} disabled={busy}>
+            Resend confirmation email
+          </button>
         )}
 
         <button type="submit" className={vault.buttonPrimary} disabled={busy} aria-busy={busy || undefined}>
