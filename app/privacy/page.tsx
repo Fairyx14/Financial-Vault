@@ -56,6 +56,15 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
+      <h2>What Dream Vault&rsquo;s administrators can see</h2>
+      <p>
+        Dream Vault has an admin area for running the service. It shows each account&rsquo;s email address, when it was
+        created, when it last signed in, whether the email is confirmed, and which vaults have something saved in them.
+        It also shows overall totals, such as how many accounts there are. It doesn&rsquo;t show what you&rsquo;ve entered
+        in your vaults. Administrators can suspend or delete accounts, for example in response to misuse, and every such
+        action is recorded.
+      </p>
+
       <h2>What Dream Vault doesn&rsquo;t do</h2>
       <ul>
         <li>It doesn&rsquo;t connect to your bank or any other financial account.</li>
