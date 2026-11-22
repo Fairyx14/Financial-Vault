@@ -1,0 +1,218 @@
+/* Header search button and dialog. Uses the shared Dream Vault tokens. */
+
+.trigger {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 10px 0 14px;
+  border: var(--bw-sm) solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition:
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+
+.trigger:hover {
+  border-color: var(--color-primary);
+  background: var(--color-hover-tint);
+}
+
+.triggerText {
+  min-width: 70px;
+  text-align: left;
+}
+
+.kbd {
+  padding: 1px 6px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  background: var(--color-tint);
+}
+
+/* Narrower screens: just the magnifying glass, the same size as the other header buttons. */
+@media (max-width: 1180px) {
+  .trigger {
+    justify-content: center;
+    width: 44px;
+    padding: 0;
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+  }
+
+  .triggerText,
+  .trigger .kbd {
+    display: none;
+  }
+}
+
+.dialog {
+  width: min(640px, calc(100vw - 24px));
+  max-height: min(640px, calc(100dvh - 48px));
+  margin: max(48px, 8vh) auto auto;
+  padding: 0;
+  border: var(--bw) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  color: var(--color-text);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  max-height: min(640px, calc(100dvh - 48px));
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: var(--bw-sm) solid var(--color-divider);
+  color: var(--color-muted);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  font: inherit;
+  font-size: 1.0625rem;
+  color: var(--color-text);
+  background: transparent;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.inputRow:focus-within {
+  box-shadow: inset 0 -3px 0 var(--color-primary);
+}
+
+.close {
+  min-height: 36px;
+  padding: 0 12px;
+  border: var(--bw-sm) solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.heading {
+  margin: 0;
+  padding: 12px 18px 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.heading:empty {
+  display: none;
+}
+
+.results {
+  flex: 1;
+  margin: 0;
+  padding: 4px 8px 8px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.resultActive {
+  background: var(--color-hover-tint);
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+.resultMain {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.resultTitle {
+  font-weight: 700;
+}
+
+.resultDesc {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.group {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  background: var(--color-tint);
+  white-space: nowrap;
+}
+
+.empty {
+  margin: 0;
+  padding: 20px 18px 24px;
+  color: var(--color-muted);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 10px 18px;
+  border-top: var(--bw-sm) solid var(--color-divider);
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+@media (max-width: 560px) {
+  .dialog {
+    margin-top: 12px;
+  }
+
+  .group {
+    display: none;
+  }
+
+  .footer {
+    display: none;
+  }
+}

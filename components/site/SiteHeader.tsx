@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import { SECTION_LINKS, VAULT_HREF } from "./nav";
+import SiteSearch from "./SiteSearch";
 import ThemeToggle from "./ThemeToggle";
 import styles from "./site.module.css";
 
@@ -107,6 +108,7 @@ export default function SiteHeader({ current = "other" }: SiteHeaderProps) {
             </Link>
           </div>
         </nav>
+        <SiteSearch />
         <ThemeToggle />
         </div>
       </div>
