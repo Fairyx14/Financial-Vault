@@ -24,10 +24,31 @@ export const vaultNameForKey = (key: string): VaultName | undefined => VAULT_NAM
 /** Fired on window after a vault's saved copy changes in this tab. */
 export const SAVED_EVENT = "dream-vault:saved";
 
+/** JSON with object keys sorted, so the same data always gives the same text. */
+export function canonicalJSON(value: unknown): string {
+  return JSON.stringify(value, (_key, v) =>
+    v && typeof v === "object" && !Array.isArray(v)
+      ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, (v as Record<string, unknown>)[k]]))
+      : v,
+  );
+}
+
+/** True when two saved copies hold the same data, even if their keys are in a different order. */
+function sameData(a: string | null, b: string): boolean {
+  if (a === b) return true;
+  if (a === null) return false;
+  try {
+    return canonicalJSON(JSON.parse(a)) === canonicalJSON(JSON.parse(b));
+  } catch {
+    return false;
+  }
+}
+
 /** Returns false when the browser refuses to store data (private mode, full disk…). */
 export function writeVault(key: string, text: string): boolean {
   try {
-    if (window.localStorage.getItem(key) === text) return true;
+    // The database stores JSON with its keys reordered, so compare the data, not the text.
+    if (sameData(window.localStorage.getItem(key), text)) return true;
     window.localStorage.setItem(key, text);
     window.dispatchEvent(new CustomEvent(SAVED_EVENT, { detail: key }));
     return true;
