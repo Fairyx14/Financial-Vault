@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of use" updated="8 November 2026">
+    <LegalPage title="Terms of use" updated="22 November 2026">
       <p>By using Dream Vault you agree to the points below. They&rsquo;re a plain-English summary of how the service works.</p>
 
       <h2>Information, not advice</h2>
@@ -26,8 +26,9 @@ export default function TermsPage() {
 
       <h2>Your data is your responsibility</h2>
       <p>
-        Your vault is stored in your browser on your device. Dream Vault can&rsquo;t recover it if it&rsquo;s deleted, so
-        keep your own records of anything important.
+        Your vaults are saved to your Dream Vault account. Keep your password safe: anyone who has it can open your
+        vaults. Deleted entries and deleted accounts can&rsquo;t be recovered, so keep your own records of anything
+        important.
       </p>
 
       <h2>Features in development</h2>

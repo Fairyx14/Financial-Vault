@@ -10,6 +10,7 @@ import {
   type IncomeDraft,
   type SavingsAllocation,
 } from "@/lib/budget";
+import { writeVault } from "@/lib/localStore";
 import { newId } from "@/lib/vault";
 
 /** Budget data has its own storage key, so it can never overwrite Savings or Investment data. */
@@ -74,12 +75,7 @@ export function useBudget() {
 
   useEffect(() => {
     if (!data) return;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      setStorageWorks(true);
-    } catch {
-      setStorageWorks(false);
-    }
+    setStorageWorks(writeVault(STORAGE_KEY, JSON.stringify(data)));
   }, [data]);
 
   const actions = useMemo(() => {

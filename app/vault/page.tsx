@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import DreamVault from "@/components/DreamVault";
+import RequireAccount from "@/components/auth/RequireAccount";
 import AppTabs from "@/components/site/AppTabs";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
@@ -7,7 +8,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 export const metadata: Metadata = {
   title: "Savings Vault",
   description:
-    "Plan your savings goals, log deposits and see when each dream could come true. Your goals are saved in this browser only.",
+    "Plan your savings goals, log deposits and see when each dream could come true. Synced to your Dream Vault account.",
 };
 
 /** The savings tracker. All app state lives in the browser; see components/DreamVault.tsx. */
@@ -34,7 +35,9 @@ export default function VaultPage() {
         </section>
 
         <div className="container">
-          <DreamVault />
+          <RequireAccount>
+            <DreamVault />
+          </RequireAccount>
         </div>
       </main>
 

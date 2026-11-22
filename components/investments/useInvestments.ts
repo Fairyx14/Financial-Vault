@@ -12,6 +12,7 @@ import {
   type InvestmentDraft,
   type TransactionDraft,
 } from "@/lib/investments";
+import { writeVault } from "@/lib/localStore";
 import { newId, todayISO } from "@/lib/vault";
 
 /**
@@ -39,12 +40,7 @@ function load(): InvestmentState {
 }
 
 function save(state: InvestmentState): boolean {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    return true;
-  } catch {
-    return false;
-  }
+  return writeVault(STORAGE_KEY, JSON.stringify(state));
 }
 
 export function useInvestments() {
@@ -53,6 +49,12 @@ export function useInvestments() {
 
   useEffect(() => {
     setState(load());
+    // Reload when another tab, or the account sync, replaces the saved copy.
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === STORAGE_KEY) setState(load());
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   useEffect(() => {

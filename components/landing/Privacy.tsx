@@ -3,16 +3,16 @@ import Icon from "@/components/Icon";
 import Section from "./Section";
 import styles from "./landing.module.css";
 
-/* Every statement here must match how the app actually works (see lib/vault.ts). */
+/* Every statement here must match how the app actually works (see components/auth and supabase/migrations). */
 const FACTS = [
   {
-    title: "Stored on your device",
-    text: "Your savings goals, investments, income and expenses are saved in your browser's local storage on this device. They aren't sent to a Dream Vault server.",
+    title: "Synced to your account",
+    text: "Your savings goals, investments, income and expenses are saved to your Dream Vault account, so they're on every device where you sign in.",
     icon: ["M4 5h16v11H4z", "M8 20h8", "M12 16v4"],
   },
   {
-    title: "No account or sign-in",
-    text: "You don't need to create an account or share an email address to use any of the vaults.",
+    title: "Your own sign-in",
+    text: "You sign in with your email and a password. The database only lets your account read or change your data; other users can't see it.",
     icon: ["M20 21a8 8 0 0 0-16 0", "M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"],
   },
   {
@@ -56,9 +56,12 @@ export default function Privacy() {
           Good to know
         </h3>
         <ul>
-          <li>Your goals don&rsquo;t sync between devices or browsers. There&rsquo;s no cloud backup yet.</li>
-          <li>Anyone using the same browser profile on this device can see your vault.</li>
-          <li>Private or incognito windows may erase your data when they close.</li>
+          <li>
+            Your data is held by Supabase, our database provider. It isn&rsquo;t end-to-end encrypted, so the people who
+            run Dream Vault and Supabase could technically access it.
+          </li>
+          <li>Anyone who knows your email and password can open your vaults. Use a password you don&rsquo;t use elsewhere.</li>
+          <li>Sign out when you finish on a shared computer. Signing out removes your data from that browser.</li>
         </ul>
         <Link href="/privacy" className={styles.simLinkDark}>
           Read the full privacy notice

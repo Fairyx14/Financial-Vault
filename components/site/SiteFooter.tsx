@@ -49,7 +49,7 @@ export default function SiteFooter() {
           projections.
         </p>
         <p>
-          © <CurrentYear /> Dream Vault. Your savings goals, investments and budget are stored in your browser on this device only.
+          © <CurrentYear /> Dream Vault. Your savings goals, investments and budget are saved to your Dream Vault account.
         </p>
       </div>
     </footer>

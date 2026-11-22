@@ -30,10 +30,10 @@ export default function Hero() {
           </div>
           <ul className={styles.heroPoints}>
             <li>
-              <Icon paths={CHECK} size={16} /> No account needed
+              <Icon paths={CHECK} size={16} /> One account, synced across your devices
             </li>
             <li>
-              <Icon paths={CHECK} size={16} /> Saved privately in your browser
+              <Icon paths={CHECK} size={16} /> Protected by your own sign-in
             </li>
             <li>
               <Icon paths={CHECK} size={16} /> Savings, Investment & Budget Vaults available now

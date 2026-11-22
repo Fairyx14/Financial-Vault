@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { GoalDraft, InvestmentGoal } from "@/lib/investmentGoals";
+import { writeVault } from "@/lib/localStore";
 import { newId, todayISO } from "@/lib/vault";
 
 /** Goals have their own storage key, separate from holdings, so projections can never change records. */
@@ -25,15 +26,18 @@ export function useInvestmentGoals() {
 
   useEffect(() => {
     setGoals(load());
+    // Reload when another tab, or the account sync, replaces the saved copy.
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === STORAGE_KEY) setGoals(load());
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   useEffect(() => {
     if (!goals) return;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, goals }));
-    } catch {
-      // The Investment Vault already warns when storage is blocked.
-    }
+    // The Investment Vault already warns when storage is blocked.
+    writeVault(STORAGE_KEY, JSON.stringify({ version: 1, goals }));
   }, [goals]);
 
   const actions = useMemo(

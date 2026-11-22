@@ -8,6 +8,7 @@
  */
 import type { GoalId } from "./goals";
 import { balanceAfter, calculatePlan, type CurrencyCode, type Plan, type PlanInput } from "./plan";
+import { writeVault } from "./localStore";
 
 export interface Entry {
   id: string;
@@ -61,12 +62,7 @@ export function loadVault(): VaultState {
 
 /** Returns false when the browser refuses to store data (private mode, full disk…). */
 export function saveVault(state: VaultState): boolean {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    return true;
-  } catch {
-    return false;
-  }
+  return writeVault(STORAGE_KEY, JSON.stringify(state));
 }
 
 export function newId(): string {

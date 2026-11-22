@@ -14,8 +14,8 @@ interface SiteHeaderProps {
 
 const TAPE = [
   "★ Every dream has a date ★",
-  "Saved privately in your browser",
-  "★ No account needed ★",
+  "Synced to your account",
+  "★ Protected by your own sign-in ★",
   "Savings, Investment & Budget Vaults live now",
   "★ Estimates, not guarantees ★",
   "Built for clarity, not spreadsheets",

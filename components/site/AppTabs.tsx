@@ -19,7 +19,7 @@ const TABS = [
 ] as const;
 
 /** Switches between the working vaults. Shown at the top of each app page. */
-export default function AppTabs({ current }: { current: (typeof TABS)[number]["id"] }) {
+export default function AppTabs({ current }: { current?: (typeof TABS)[number]["id"] }) {
   return (
     <nav aria-label="Your vaults" className={`container ${styles.appTabsWrap}`}>
       <ul className={styles.appTabs}>

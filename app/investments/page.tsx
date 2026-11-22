@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import InvestmentVault from "@/components/investments/InvestmentVault";
+import RequireAccount from "@/components/auth/RequireAccount";
 import AppTabs from "@/components/site/AppTabs";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
@@ -8,7 +9,7 @@ import styles from "@/components/investments/investments.module.css";
 export const metadata: Metadata = {
   title: "Investment Vault",
   description:
-    "Track your investments, see your portfolio value and gains, all from prices you enter. Stored in your browser only.",
+    "Track your investments, see your portfolio value and gains, all from prices you enter. Synced to your Dream Vault account.",
 };
 
 export default function InvestmentsPage() {
@@ -34,7 +35,9 @@ export default function InvestmentsPage() {
         </section>
 
         <div className="container">
-          <InvestmentVault />
+          <RequireAccount>
+            <InvestmentVault />
+          </RequireAccount>
           <p className={styles.disclaimer}>
             Investment Vault is a personal tracking and educational planning tool. Market values are manually entered
             unless otherwise stated. Investment returns are not guaranteed, and projections are illustrative rather than

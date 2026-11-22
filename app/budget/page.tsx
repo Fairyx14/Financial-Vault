@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BudgetVault from "@/components/budget/BudgetVault";
+import RequireAccount from "@/components/auth/RequireAccount";
 import AppTabs from "@/components/site/AppTabs";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
@@ -7,7 +8,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 export const metadata: Metadata = {
   title: "Budget Vault",
   description:
-    "Track income and expenses, set category budgets and manage bills and subscriptions. Stored in your browser only.",
+    "Track income and expenses, set category budgets and manage bills and subscriptions. Synced to your Dream Vault account.",
 };
 
 export default function BudgetPage() {
@@ -32,7 +33,9 @@ export default function BudgetPage() {
         </section>
 
         <div className="container">
-          <BudgetVault />
+          <RequireAccount>
+            <BudgetVault />
+          </RequireAccount>
         </div>
       </main>
 
